@@ -105,7 +105,7 @@ class TicketsController extends Controller
         ->first();
       
        $num = sprintf('%03d', intval($number->no));
-       return redirect()->back()->with("status", "A ticket with ID: $ticket->job$num no has been requested.");
+       return redirect()->back()->with("status", "A ticket with ID: $ticket->job$num has been requested.");
     }
 
 

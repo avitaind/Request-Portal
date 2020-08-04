@@ -8,7 +8,6 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
         <!-- Styles -->
         <style>

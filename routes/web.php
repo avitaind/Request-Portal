@@ -1,6 +1,6 @@
 <?php
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
 Auth::routes();
@@ -29,8 +29,8 @@ Route::group(['middleware' => ['auth:admin,client'] ], function(){
         Route::get('new_ticket','TicketsController@create');
         Route::post('new_ticket', 'TicketsController@store');
 
-        Route::get('update_ticket', 'TicketsController@update'); //admin only
-        Route::get('show_ticket', 'TicketsController@show'); //admin only
+        Route::get('update_ticket', 'TicketsController@update'); 
+        Route::get('show_ticket', 'TicketsController@show');
 
 
         Route::get('view_ticket', 'TicketsController@view');

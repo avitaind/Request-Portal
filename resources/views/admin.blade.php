@@ -12,7 +12,7 @@
           
                 <div class="center-center links">
                         <a href="{{ url('show_ticket') }}">View Request</a>
-                        <a href="{{ url('update_ticket') }}">Update Request</a>
+                        <a href="{{ url('new_ticket') }}">Create Request</a>
 
                   </div>
             </div>
