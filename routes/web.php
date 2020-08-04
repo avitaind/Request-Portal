@@ -34,9 +34,10 @@ Route::group(['middleware' => ['auth:admin,client'] ], function(){
 
 
         Route::get('view_ticket', 'TicketsController@view');
-        Route::post('/update/{id}', 'TicketsController@update');
+    
 
         Route::get('/ticket/detail/{slug}', 'TicketsController@showTicketDetail')->name('ticket.detail');
         Route::get('/ticket/status/{slug}', 'TicketsController@viewTicketDetail')->name('ticket.status');
     
  });
+ Route::post('/update/{id}', 'TicketsController@update');
