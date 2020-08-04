@@ -52,13 +52,9 @@ class TicketsController extends Controller
         $deadline = $request->input('deadline');
         $status = $request->input('status');
       
-        DB::update('update tickets set deadline = ?, status = ? where no = ?', [$deadline, $status, $id]);
-  
+       DB::update('update tickets set deadline = ?, status = ? where no = ?', [$deadline, $status, $id]);
        $num = sprintf('%03d', intval($id));
-
-        return redirect()->back()->with("status", "A ticket with ID: ADNESEA$num no has been requested.");
-
-
+       return redirect()->back()->with("status", "A ticket with ID: ADNESEA$num has been updated.");
 
     }
    
@@ -120,8 +116,8 @@ class TicketsController extends Controller
 
     public function showTicketDetail($slug ){
 
-        $ticket_detail = Ticket::where('no', $slug)->get()->first();
+        $ticket_view = Ticket::where('no', $slug)->get()->first();
 
-        return view('admin.details', compact('ticket_detail'));
+        return view('admin.details', compact('ticket_view'));
     }
 }

@@ -3,6 +3,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm');
@@ -32,12 +33,10 @@ Route::group(['middleware' => ['auth:admin,client'] ], function(){
         Route::get('update_ticket', 'TicketsController@update'); 
         Route::get('show_ticket', 'TicketsController@show');
 
-
+        Route::post('/update/{id}', 'TicketsController@update');
         Route::get('view_ticket', 'TicketsController@view');
-    
 
         Route::get('/ticket/detail/{slug}', 'TicketsController@showTicketDetail')->name('ticket.detail');
         Route::get('/ticket/status/{slug}', 'TicketsController@viewTicketDetail')->name('ticket.status');
     
  });
- Route::post('/update/{id}', 'TicketsController@update');
