@@ -24,19 +24,19 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 //Tickets Route
 
+Route::group(['middleware' => ['auth:admin,client'] ], function(){
 
-Route::get('new_ticket','TicketsController@create');
-Route::post('new_ticket', 'TicketsController@store');
+        Route::get('new_ticket','TicketsController@create');
+        Route::post('new_ticket', 'TicketsController@store');
 
-Route::get('update_ticket', 'TicketsController@update'); //admin only
-Route::get('show_ticket', 'TicketsController@show'); //admin only
-
-
-Route::get('view_ticket', 'TicketsController@view');
+        Route::get('update_ticket', 'TicketsController@update'); //admin only
+        Route::get('show_ticket', 'TicketsController@show'); //admin only
 
 
-Route::post('/update/{id}', 'TicketsController@update');
+        Route::get('view_ticket', 'TicketsController@view');
+        Route::post('/update/{id}', 'TicketsController@update');
 
-
-Route::get('/ticket/detail/{slug}', 'TicketsController@showTicketDetail')->name('ticket.detail');
-Route::get('/ticket/status/{slug}', 'TicketsController@viewTicketDetail')->name('ticket.status');
+        Route::get('/ticket/detail/{slug}', 'TicketsController@showTicketDetail')->name('ticket.detail');
+        Route::get('/ticket/status/{slug}', 'TicketsController@viewTicketDetail')->name('ticket.status');
+    
+ });

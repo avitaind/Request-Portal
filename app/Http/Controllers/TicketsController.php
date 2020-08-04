@@ -14,6 +14,7 @@ use Faker\Provider\Image;
 use App\Mailers\AppMailer;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 
+
 class TicketsController extends Controller
 {
     

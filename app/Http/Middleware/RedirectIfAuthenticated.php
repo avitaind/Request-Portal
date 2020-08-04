@@ -16,7 +16,7 @@ class RedirectIfAuthenticated
             return redirect('/client');
         }
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            return redirect('/');
         }
 
         return $next($request);
