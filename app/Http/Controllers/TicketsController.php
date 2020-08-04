@@ -6,6 +6,7 @@ use Admin;
 use Client;
 
 use DB;
+use Storage;
 
 use Illuminate\Http\Request;
 use App\Category;
@@ -73,7 +74,7 @@ class TicketsController extends Controller
             'category'  => 'required',
             'priority'  => 'required',
             'summary'   => 'required',
-            'reference' => 'file|image|mimes:jpeg,png,jpg,gif,svg,xls,docx,pptx|max:6000',
+            'reference' => 'file|mimes:jpeg,png,jpg,gif,svg,xls,docx,pptx|max:6000',
                       
         ]);
         

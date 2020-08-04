@@ -9,6 +9,7 @@
         <div class="col-md-10">
 
         <table class="table table-hover">
+        
           
                 <tr>
                     <th scope="col">Job No:</th>
@@ -50,7 +51,7 @@
                 <tr>
                   
                  <th scope="col">Reference:</th>
-                  <td>{!! $ticket_detail->reference !!}</td>
+                  <td><a href="{{ public_path().'/uploads/'.$ticket_detail->reference}}" target="_blank" download="{!! $ticket_detail->reference !!}">Download File</a></td>
                  </tr>
 
                 <tr>
