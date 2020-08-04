@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.app')
 
 @section('title', 'Open Ticket')
 
@@ -47,17 +47,21 @@
                     <th scope="col">Objective:</th>
                 <td>{!! $ticket_detail->objective !!}</td>
                 </tr>
-                     
+
+                
+                <tr>
+                 <th scope="col">Other Information:</th>
+                <td>{!! $ticket_detail->otherinfo !!}</td>
+                 </tr>
+
+
                 <tr>
                   
                  <th scope="col">Reference:</th>
                   <td><a href="{{ '/uploads/'.$ticket_detail->reference}}" target="_blank" download="{!! $ticket_detail->reference !!}">Download File</a></td>
                  </tr>
 
-                <tr>
-                 <th scope="col">Other Information:</th>
-                <td>{!! $ticket_detail->otherinfo !!}</td>
-                 </tr>
+        
 
 
                  <tr>

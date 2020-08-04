@@ -19,7 +19,7 @@ use Haruncpi\LaravelIdGenerator\IdGenerator;
 class TicketsController extends Controller
 {
     
-    protected $guard = ['admin', 'client'];
+ //   protected $guard = ['admin', 'client'];
 
     public function create()
     {
@@ -48,7 +48,7 @@ class TicketsController extends Controller
 
     public function update(Request $request, $id)
     {
-     
+      
         $deadline = $request->input('deadline');
         $status = $request->input('status');
       
