@@ -51,7 +51,7 @@
                 <tr>
                   
                  <th scope="col">Reference:</th>
-                  <td><a href="{{ public_path().'/uploads/'.$ticket_detail->reference}}" target="_blank" download="{!! $ticket_detail->reference !!}">Download File</a></td>
+                  <td><a href="{{ '/uploads/'.$ticket_detail->reference}}" target="_blank" download="{!! $ticket_detail->reference !!}">Download File</a></td>
                  </tr>
 
                 <tr>
