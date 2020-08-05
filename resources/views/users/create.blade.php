@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     @include('includes.flash')
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/new_ticket') }}" enctype="multipart/form-data">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/new_ticket') }}"  enctype="multipart/form-data" >
 
                         {!! csrf_field() !!}
 

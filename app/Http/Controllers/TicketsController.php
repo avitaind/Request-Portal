@@ -19,7 +19,7 @@ use Haruncpi\LaravelIdGenerator\IdGenerator;
 class TicketsController extends Controller
 {
     
- //   protected $guard = ['admin', 'client'];
+    protected $guard = ['admin', 'client'];
 
     public function create()
     {
@@ -62,7 +62,6 @@ class TicketsController extends Controller
 
     public function store(Request $request){
 
-      
 
         $this->validate($request, [
             'brand'     => 'required',
@@ -70,16 +69,19 @@ class TicketsController extends Controller
             'category'  => 'required',
             'priority'  => 'required',
             'summary'   => 'required',
-            'reference' => 'file|mimes:jpeg,png,jpg,gif,svg,xls,docx,pptx|max:6000',
+            'reference' => 'mimes:jpg,jpeg,png,pdf,xlxs,xlx,ppt,pptx,csv|max:30720',
                       
         ]);
+
+        $fileName="";
         
+        if($request->hasFile('reference')){
+            $image = $request->file('reference');
+            $fileName = $image->getClientOriginalName();
+        }
        
-        $fileName = time().'.'.$request->reference->getClientOriginalName();
-        $request->reference->move(public_path().'/uploads', $fileName);
 
-
-         $ticket = new Ticket([
+      $ticket = new Ticket([
              'job'     => 'ADNESEA',
              'brand'     => $request->input('brand'),
              'title'     => $request->input('title'),
@@ -90,10 +92,12 @@ class TicketsController extends Controller
              'reference' => $fileName,
              'otherinfo' => $request->input('otherinfo'),
          ]);
-
-       
-        $ticket->save();
-
+        
+           
+      //    $fileName = $request->file('reference')->getClientOriginalName();
+       //  $request->reference->move(public_path().'/uploads', $fileName);
+         $ticket->save();
+         
       //  $mailer->sendTicketInformation(Auth::user(), $ticket);
 
         $number = DB::table('tickets')
@@ -103,7 +107,7 @@ class TicketsController extends Controller
        $num = sprintf('%03d', intval($number->no));
        return redirect()->back()->with("status", "A ticket with ID: $ticket->job$num has been requested.");
     }
-
+    
 
     public function viewTicketDetail($slug ){
 
