@@ -31,7 +31,7 @@ class AppMailer {
         $num = sprintf('%03d', intval($number->no));
 
 
-        $this->to = ['sandeep.rawat@ashplan.media'];
+        $this->to = ['aman.sharma@ashplan.media','info@ashplan.media'];
         $this->subject = "[Ticket ID: $ticket->job$num] $ticket->title";
         $this->view = 'emails.ticket_info';
         $this->data = compact('user', 'ticket');
