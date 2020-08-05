@@ -62,7 +62,7 @@ class TicketsController extends Controller
 
     public function store(Request $request){
 
-
+        $fileName="";
         $this->validate($request, [
             'brand'     => 'required',
             'title'     => 'required',
@@ -72,12 +72,11 @@ class TicketsController extends Controller
             'reference' => 'mimes:jpg,jpeg,png,pdf,xlxs,xlx,ppt,pptx,csv|max:30720',
                       
         ]);
-
-        $fileName="";
-        
+ 
         if($request->hasFile('reference')){
-            $image = $request->file('reference');
-            $fileName = $image->getClientOriginalName();
+            $image = $request->file('reference')->getClientOriginalName();
+            $fileName = $request->reference->move('uploads', $image);
+            
         }
        
 
