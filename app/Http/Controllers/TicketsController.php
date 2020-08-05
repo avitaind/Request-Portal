@@ -118,8 +118,16 @@ class TicketsController extends Controller
 
     public function showTicketDetail($slug ){
 
-        $ticket_view = Ticket::where('no', $slug)->get()->first();
+        $ticket_detail = Ticket::where('no', $slug)->get()->first();
 
-        return view('admin.details', compact('ticket_view'));
+        return view('admin.details', compact('ticket_detail'));
+    }
+
+    public function deleteTicketDetail($slug){
+
+        $ticket = Ticket::findOrFail($slug);
+        $ticket->delete();
+        return redirect()->view('home');
+
     }
 }

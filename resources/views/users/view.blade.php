@@ -18,6 +18,8 @@
                     <th scope="col">Priority</th>
                     <th scope="col">Deadline</th>
                     <th scope="col">Status</th>
+         
+
                     </tr>
                 </thead>
                 <tbody>
@@ -35,13 +37,15 @@
                     
                     <div class="col-md-10 col-md-offset-4">
                     <a class="event-more" href="{{ route('ticket.status', $ticket->no) }}">
-                                <i class="fa fa-plus-circle" aria-hidden="true"></i> More
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i> More
                      </a>
+                     
                   </div>
                     
                     </td>
                    </tr>
                     @endforeach
+
                 </tbody>
             </thead>
          </table>

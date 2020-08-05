@@ -9,42 +9,45 @@
        <div class="col-md-10">
            <div class="panel-body">
            @include('includes.flash')
-                  <form class="form-horizontal" role="form" action="/update/{{  $ticket_view->no }}" method="POST">
+                  <form class="form-horizontal" role="form" action="/update/{{  $ticket_detail->no }}" method="POST">
                    {!! csrf_field() !!}
 
-             <table class="table table-hover">
-        
+                 <table class="table table-hover">
+                       <tr>
+                             <th scope="col">Date:</th>
+                             <td>{{ date('d-m-Y', strtotime($ticket_detail->created_at)) }}</td>
+                         </tr>
                         <tr>
                              <th scope="col">Job No:</th>
-                             <td>ADNESEA{{ $num = sprintf('%03d', intval($ticket_view->no))}}</td>
+                             <td>ADNESEA{{ $num = sprintf('%03d', intval($ticket_detail->no))}}</td>
                          </tr>
                
                         <tr>
                             <th scope="col">Brand:</th>
-                            <td>{!! $ticket_view->brand !!}</td>
+                            <td>{!! $ticket_detail->brand !!}</td>
                         </tr>
                         
                          <tr>
                             <th scope="col">Title:</th>
-                            <td>{!! $ticket_view->title !!}</td>
+                            <td>{!! $ticket_detail->title !!}</td>
                          </tr>
                          <tr>
                              <th scope="col">Category:</th>
-                             <td>{!! $ticket_view->category_name !!}</td>
+                             <td>{!! $ticket_detail->category_name !!}</td>
                          </tr>
                
                         <tr>
                             <th scope="col">Priority:</th>
-                            <td>{!! $ticket_view->priority !!}</td>
+                            <td>{!! $ticket_detail->priority !!}</td>
                         </tr>
                         
                          <tr>
                             <th scope="col">Summary:</th>
-                            <td>{!! $ticket_view->summary !!}</td>
+                            <td>{!! $ticket_detail->summary !!}</td>
                          </tr>
                          <tr>
                              <th scope="col">Objective:</th>
-                             <td>{!! $ticket_view->objective !!}</td>
+                             <td>{!! $ticket_detail->objective !!}</td>
                          </tr>
                
                         <tr>
@@ -62,7 +65,7 @@
                         
                          <tr>
                             <th scope="col">Other Information:</th>
-                            <td>{!! $ticket_view->otherinfo !!}</td>
+                            <td>{!! $ticket_detail->otherinfo !!}</td>
                          </tr>
                
 
@@ -103,13 +106,19 @@
                             </td>
                          </tr>
                          <tr>
-                            <td></td>
+                            <td>
+                            
+                            </td>
                          <td>
                              <div class="form-group">
-                             <button type="submit" class="btn btn-primary">
+                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-ticket"></i> Submit
                                 </button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-ticket"></i> Delete
+                                </button>
                              </div>
+                             
                              </td>
                         </tr>
                 
