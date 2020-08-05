@@ -3,6 +3,8 @@ namespace App\Mailers;
 
 use App\Ticket;
 use Illuminate\Contracts\Mail\Mailer;
+use App\Client;
+use DB;
 
 class AppMailer {
     protected $mailer; 
@@ -21,8 +23,16 @@ class AppMailer {
     public function sendTicketInformation($user, Ticket $ticket)
     {
         //$this->to = $user->email;
-        $this->to = ['aman.sharma@ashplan.media','info@ashplan.media'];
-        $this->subject = "[Ticket ID: $ticket->ticket_id] $ticket->title";
+
+        $number = DB::table('tickets')
+        ->orderBy('created_at','desc')
+        ->first();
+      
+        $num = sprintf('%03d', intval($number->no));
+
+
+        $this->to = ['sandeep.rawat@ashplan.media'];
+        $this->subject = "[Ticket ID: $ticket->job$num] $ticket->title";
         $this->view = 'emails.ticket_info';
         $this->data = compact('user', 'ticket');
 

@@ -48,8 +48,16 @@
                          </tr>
                
                         <tr>
+                        @if($ticket_detail->reference!='')
+                        
+                        <th scope="col">Reference:</th>
+                        
+                        <td><a href="{{ '/'.$ticket_detail->reference}}" target="_blank" download="{!! $ticket_detail->reference !!}">Download File</a></td>
+                            @else
                             <th scope="col">Reference:</th>
-                            <td><a href="{{ '/uploads/'.$ticket_view->reference}}" target="_blank" download="{!! $ticket_view->reference !!}">Download File</a></td>
+                            <td>N/A</td>
+
+                            @endif
                         </tr>
                         
                          <tr>
