@@ -75,7 +75,7 @@ class TicketsController extends Controller
  
         if($request->hasFile('reference')){
             $image = $request->file('reference')->getClientOriginalName();
-            $fileName = $request->reference->move('uploads', $image);
+            $fileName = date('mdYHis').$request->reference->move('uploads', $image);
             
         }
        
