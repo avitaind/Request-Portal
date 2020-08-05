@@ -60,7 +60,7 @@ class TicketsController extends Controller
    
 
 
-    public function store(Request $request){
+    public function store(Request $request, AppMailer $mailer){
 
         $fileName="";
         $this->validate($request, [
@@ -78,8 +78,7 @@ class TicketsController extends Controller
             $fileName = $request->reference->move(date('mdYHis').'uploads', $image);
             
         }
-       
-
+  
       $ticket = new Ticket([
              'job'     => 'ADNESEA',
              'brand'     => $request->input('brand'),
@@ -97,7 +96,7 @@ class TicketsController extends Controller
        //  $request->reference->move(public_path().'/uploads', $fileName);
          $ticket->save();
          
-      //  $mailer->sendTicketInformation(Auth::user(), $ticket);
+        $mailer->sendTicketInformation(Auth::user(), $ticket);
 
         $number = DB::table('tickets')
         ->orderBy('created_at','desc')
