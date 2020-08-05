@@ -126,7 +126,7 @@
 
                             <div class="col-md-10">
                                 <input id="reference" type="file" class="form-control" name="reference" value="{{ old('reference') }}">
-
+                                <p class="files">Supported file format: jpg, jpeg, png, pdf, xlxs, xlx, ppt, pptx, csv</p>    
                                @if ($errors->has('reference'))
                                     <span class="help-block">
                                     <strong><span class="error">{{ $errors->first('reference') }}</span></strong>
@@ -143,7 +143,7 @@
 
                                 @if ($errors->has('otherinfo'))
                                     <span class="help-block">
-                                    <strong><span class="error">Other Information Field Can Not Be Empty</span></strong>
+                                    <strong><span class="error">Other Information can not be too long</span></strong>
                                     </span>
                                 @endif
                             </div>

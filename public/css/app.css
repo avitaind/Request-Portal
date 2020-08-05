@@ -147,6 +147,11 @@ blockquote {
 b,
 strong {
   font-weight: bolder;
+  color:red;
+}
+
+.files{
+  color:var(--blue);
 }
 
 small {
