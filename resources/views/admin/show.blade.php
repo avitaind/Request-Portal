@@ -41,8 +41,8 @@
                      </td>
                   <td>
                    
-                     <a href="{{ route('ticket.delete', $ticket->no) }}" class="btn btn-danger">Delete</a>
-                <!--     <a href="/ticket/delete/{{ $ticket->no }}" class="btn btn-danger">Delete</a> --->
+                   <!--    <a href="{{ route('ticket.delete', $ticket->no) }}" class="btn btn-danger">Delete</a>
+                   <a href="/ticket/delete/{{ $ticket->no }}" class="btn btn-danger">Delete</a> --->
 
                     
                     </td> 
