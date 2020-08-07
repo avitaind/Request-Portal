@@ -9,7 +9,7 @@ use DB;
 class AppMailer {
     protected $mailer; 
     protected $fromAddress = 'contact@avita-india.com';
-    protected $fromName = 'Request Portal | Ticket';
+    protected $fromName = 'Service Request Portal | AVITA INDIA';
     protected $to;
     protected $subject;
     protected $view;
@@ -32,7 +32,7 @@ class AppMailer {
 
 
         $this->to = ['aman.sharma@ashplan.media','info@ashplan.media'];
-        $this->subject = "[Ticket ID: $ticket->job$num] $ticket->title";
+        $this->subject = "[SRN No. $ticket->job$num] $ticket->title";
         $this->view = 'emails.ticket_info';
         $this->data = compact('user', 'ticket');
 

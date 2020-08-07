@@ -54,7 +54,7 @@ class TicketsController extends Controller
       
        DB::update('update tickets set deadline = ?, status = ? where no = ?', [$deadline, $status, $id]);
        $num = sprintf('%03d', intval($id));
-       return redirect()->back()->with("status", "A ticket with ID: ADNESEA$num has been updated.");
+       return redirect()->back()->with("status", "Your SRN no. ADNESEA$num has been updated.");
 
     }
    
@@ -103,7 +103,7 @@ class TicketsController extends Controller
         ->first();
       
        $num = sprintf('%03d', intval($number->no));
-       return redirect()->back()->with("status", "A ticket with ID: $ticket->job$num has been requested.");
+       return redirect()->back()->with("status", "A new SRN no. : $ticket->job$num has been generated.");
     }
     
 
