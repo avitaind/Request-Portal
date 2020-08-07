@@ -85,12 +85,18 @@
 
 
                  <tr>
-                 <td></td>
+               
+                 <td>
+                 
+                  
+                 </td>
                  <td>
                  <div class="col">
-                 <a href="{{ url()->previous() }}" class="btn btn-primary">Back to Menu</a>
+                    <a href="{{ url('view_ticket') }}" class="btn btn-primary">Back to Menu</a>
                   </div>
+                  
                  </td>
+                 
                  </tr>
           </table>
 

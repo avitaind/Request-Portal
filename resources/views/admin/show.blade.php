@@ -35,22 +35,17 @@
 
                     <td>
                     
-                    <div class="col-md-10 col-md-offset-4">
-                    <a class="event-more" href="{{ route('ticket.detail', $ticket->no) }}">
-                         <i class="fa fa-plus-circle" aria-hidden="true"></i> More
-                     </a>
-                     </div>
+                  
+                        <a href="{{ route('ticket.detail', $ticket->no) }}" class="btn btn-primary">View</a>
+                     
                      </td>
-                   <!--  <td>
-                     <div class="col-md-10 col-md-offset-4">
-                     <form action="{{ route('ticket.delete', $ticket->no) }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                      </form>
-                  </div>
+                  <td>
+                   
+                     <a href="{{ route('ticket.delete', $ticket->no) }}" class="btn btn-danger">Delete</a>
+                <!--     <a href="/ticket/delete/{{ $ticket->no }}" class="btn btn-danger">Delete</a> --->
+
                     
-                    </td> -->
+                    </td> 
                    </tr>
                     @endforeach
                 </tbody>

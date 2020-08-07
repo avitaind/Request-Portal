@@ -112,10 +112,7 @@
                          <td>
                              <div class="form-group">
                                  <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-ticket"></i> Submit
-                                </button>
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-ticket"></i> Delete
+                                    <i class="fa fa-btn fa-ticket"></i> Update Details
                                 </button>
                              </div>
                              

@@ -11,6 +11,7 @@
         <table class="table table-hover">
             <thead>
                 <tr>
+                   <th scope="col">Date</th>
                     <th scope="col">Job No</th>
                     <th scope="col">Brand</th>
                     <th scope="col">Project Title</th>
@@ -25,7 +26,7 @@
                 <tbody>
                 @foreach( $tickets as $ticket )
                     <tr class="table-active">
-                  
+                    <td>{{ date('d-m-Y', strtotime($ticket->created_at)) }}</td>
                     <td>ADNESEA{{ $num = sprintf('%03d', intval($ticket->no))}}</td>
                     <td>{{ $ticket->brand }}</td>
                     <td>{{ $ticket->title }}</td>
@@ -36,10 +37,7 @@
                     <td>
                     
                     <div class="col-md-10 col-md-offset-4">
-                    <a class="event-more" href="{{ route('ticket.status', $ticket->no) }}">
-                        <i class="fa fa-plus-circle" aria-hidden="true"></i> More
-                     </a>
-                     
+                          <a href="{{ route('ticket.status', $ticket->no) }}" class="btn btn-primary">View</a>
                   </div>
                     
                     </td>
