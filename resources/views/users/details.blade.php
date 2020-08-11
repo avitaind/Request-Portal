@@ -9,8 +9,6 @@
         <div class="col-md-10">
 
         <table class="table table-hover">
-        
-          
                 <tr>
                     <th scope="col">Job No:</th>
                     <td>ADNESEA{{ $num = sprintf('%03d', intval($ticket_detail->no))}}</td>
