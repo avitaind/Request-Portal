@@ -31,7 +31,8 @@ class TicketsController extends Controller
 
     public function show()
     {
-        $tickets = Ticket::all();
+        //$tickets = Ticket::all();
+        $tickets = Ticket::latest()->orderBy('no', 'desc')->get();
         return view('admin.show', compact('tickets'));
 
     }
@@ -39,7 +40,8 @@ class TicketsController extends Controller
 
     public function view()
     {
-        $tickets = Ticket::all();
+        //$tickets = Ticket::all();
+        $tickets = Ticket::latest()->orderBy('no', 'desc')->get();
         return view('users.view', compact('tickets'));
 
     }
