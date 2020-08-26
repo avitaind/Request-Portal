@@ -18,6 +18,7 @@ class CreateTicketsTable extends Migration
             $table->string('job');
             $table->bigIncrements('no')->unique();
             $table->string('brand');
+            $table->string('country');
             $table->string('title');
             $table->string('category_name');
             $table->string('priority');

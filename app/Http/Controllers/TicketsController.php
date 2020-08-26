@@ -67,6 +67,7 @@ class TicketsController extends Controller
         $fileName="";
         $this->validate($request, [
             'brand'     => 'required',
+            'country'   => 'required',
             'title'     => 'required',
             'category'  => 'required',
             'priority'  => 'required',
@@ -84,6 +85,7 @@ class TicketsController extends Controller
       $ticket = new Ticket([
              'job'     => 'ADNESEA',
              'brand'     => $request->input('brand'),
+             'country'     => $request->input('country'),
              'title'     => $request->input('title'),
              'category_name' => $request->input('category'),
              'priority'   => $request->input('priority'),

@@ -8,66 +8,70 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
 
+     
         <table class="table table-hover">
-                <tr>
-                    <th scope="col">Job No:</th>
-                    <td>ADNESEA{{ $num = sprintf('%03d', intval($ticket_detail->no))}}</td>
-                </tr>
-                     
-                <tr>
-                  
-                 <th scope="col">Brand:</th>
-                    <td>{!! $ticket_detail->brand !!}</td>
-                 </tr>
-                 <tr>
-                    <th scope="col">Title:</th>
-                 <td>{!! $ticket_detail->title !!}</td>
-                </tr>
-                     
-                <tr>
-                  
-                 <th scope="col">Category:</th>
-                 <td>{!! $ticket_detail->category_name !!}</td>
-                 </tr>
+                       <tr>
+                             <th scope="col">Date:</th>
+                             <td>{{ date('d-m-Y', strtotime($ticket_detail->created_at)) }}</td>
+                         </tr>
+                        <tr>
+                             <th scope="col">Job No:</th>
+                             <td>ADNESEA{{ $num = sprintf('%03d', intval($ticket_detail->no))}}</td>
+                         </tr>
                
-                 <tr>
-                    <th scope="col">Priority:</th>
-                <td>{!! $ticket_detail->priority !!}</td>
-                </tr>
-                     
-                <tr>
-                  
-                 <th scope="col">Summary:</th>
-                 <td>{!! $ticket_detail->summary !!}</td>
-                 </tr>
+                        <tr>
+                            <th scope="col">Brand:</th>
+                            <td>{{ ucfirst(trans($ticket_detail->brand)) }}</td>
+                        </tr>
+                        
+                        <tr>
+                            <th scope="col">Country:</th>
+                            <td>{{ ucfirst(trans($ticket_detail->country)) }}</td>
+                        </tr>
+                        
+                         <tr>
+                            <th scope="col">Title:</th>
+                            <td>{!! $ticket_detail->title !!}</td>
+                         </tr>
+                         <tr>
+                             <th scope="col">Category:</th>
+                             <td>{!! $ticket_detail->category_name !!}</td>
+                         </tr>
                
-                 <tr>
-                    <th scope="col">Objective:</th>
-                <td>{!! $ticket_detail->objective !!}</td>
-                </tr>
+                        <tr>
+                            <th scope="col">Priority:</th>
+                            <td>{{ ucfirst(trans($ticket_detail->priority)) }}</td>
+                        </tr>
+                        
+                         <tr>
+                            <th scope="col">Summary:</th>
+                            <td>{{ ucfirst(trans($ticket_detail->summary)) }}</td>
+                         </tr>
+                         <tr>
+                             <th scope="col">Objective:</th>
+                             <td>{{ ucfirst(trans($ticket_detail->objective)) }}</td>
+                         </tr>
+               
+                        <tr>
+                        @if($ticket_detail->reference!='')
+                        
+                        <th scope="col">Reference:</th>
+                        
+                        <td><a href="{{ '/'.$ticket_detail->reference}}" target="_blank" download="{!! $ticket_detail->reference !!}">Download File</a></td>
+                            @else
+                            <th scope="col">Reference:</th>
+                            <td>N/A</td>
 
-                
-                <tr>
-                 <th scope="col">Other Information:</th>
-                <td>{!! $ticket_detail->otherinfo !!}</td>
-                 </tr>
+                            @endif
+                        </tr>
+                        
+                         <tr>
+                            <th scope="col">Other Information:</th>
+                            <td>{!! $ticket_detail->otherinfo !!}</td>
+                         </tr>
+               
 
-
-                <tr>
-
-                  @if($ticket_detail->reference!='')
-
-                 <th scope="col">Reference:</th>
-                  <td><a href="{{ '/'.$ticket_detail->reference}}" target="_blank" download="{!! $ticket_detail->reference !!}">Download File</a></td>
-                
-                 @else
-
-                <th scope="col">Reference:</th>
-                  <td>N/A</td>
-                 
-                @endif
-
-            </tr>
+               <!--- form  --->
 
 
                  <tr>

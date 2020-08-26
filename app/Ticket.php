@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ticket extends Model
 {
     protected $fillable = [
-        'job','no', 'brand', 'title', 'category_name', 'priority', 'summary', 'objective', 'reference', 'otherinfo'
+        'job','no', 'brand', 'country', 'title', 'category_name', 'priority', 'summary', 'objective', 'reference', 'otherinfo'
     ];
     // Ticket.php file
 

@@ -24,7 +24,12 @@
                
                         <tr>
                             <th scope="col">Brand:</th>
-                            <td>{!! $ticket_detail->brand !!}</td>
+                            <td>{{ ucfirst(trans($ticket_detail->brand)) }}</td>
+                        </tr>
+                        
+                        <tr>
+                            <th scope="col">Country:</th>
+                            <td>{{ ucfirst(trans($ticket_detail->country)) }}</td>
                         </tr>
                         
                          <tr>
@@ -38,16 +43,16 @@
                
                         <tr>
                             <th scope="col">Priority:</th>
-                            <td>{!! $ticket_detail->priority !!}</td>
+                            <td>{{ ucfirst(trans($ticket_detail->priority)) }}</td>
                         </tr>
                         
                          <tr>
                             <th scope="col">Summary:</th>
-                            <td>{!! $ticket_detail->summary !!}</td>
+                            <td>{{ ucfirst(trans($ticket_detail->summary)) }}</td>
                          </tr>
                          <tr>
                              <th scope="col">Objective:</th>
-                             <td>{!! $ticket_detail->objective !!}</td>
+                             <td>{{ ucfirst(trans($ticket_detail->objective)) }}</td>
                          </tr>
                
                         <tr>

@@ -19,9 +19,8 @@
 
                             <div class="col-md-10">
                                  <select id="brand" type="brand" class="form-control" name="brand">
-                                   
-                                    <option value="">--- Select --- </option>
 
+                               <option value="">--- Select --- </option>
                                <option value="avita">AVITA</option>
                                <option value="nexstgo">NEXSTGO</option>
                                <option value="vaio">VAIO</option>
@@ -37,6 +36,27 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
+                            <label for="country" class="col-md-10 control-label">Country</label>
+
+                            <div class="col-md-10">
+                               <select id="country" type="country" class="form-control" name="country">
+
+                               <option value="">--- Select --- </option>
+                               <option value="india">INDIA</option>
+                               <option value="bangladesh">BANGLADESH</option>
+                               <option value="mauritius">MAURITIUS</option>
+                               <option value="shrilanka">SHRI LANKA</option>
+                               <option value="nepal">NEPAL</option>
+
+                                </select>
+                                @if ($errors->has('country'))
+                                    <span class="help-block">
+                                    <strong><span class="error">Country Name Can Not Be Empty</span></strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label for="title" class="col-md-10 control-label">Project Title</label>
@@ -85,12 +105,8 @@
                             </div>
                         </div>
 
-
-                                   
-
                         <div class="form-group{{ $errors->has('priority') ? ' has-error' : '' }}">
                             <label for="priority" class="col-md-10 control-label">Priority</label>
-
                             <div class="col-md-10">
                                 <select id="priority" type="" class="form-control" name="priority">
                                     <option value="">--- Select ---</option>
