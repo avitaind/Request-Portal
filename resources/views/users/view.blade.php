@@ -51,7 +51,7 @@
     </div> 
         <div>
 
-            <a href="{{ url('new_ticket') }}" class="button btn btn-primary">Create New Request</a>
+            <a href="{{ url('new_ticket') }}" class="button btn btn-primary">Create New Ticket</a>
 
         </div>
   </div> 

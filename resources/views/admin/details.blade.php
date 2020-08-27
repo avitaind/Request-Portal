@@ -80,6 +80,7 @@
                             <th scope="col">Deadline:</th>
                             <td>
                             <div class="form-group{{ $errors->has('deadline') ? ' has-error' : '' }}">
+
                             <input id="deadline" type="date" class="form-control" name="deadline" value="{{ old('deadline') }}">
                                 @if ($errors->has('deadline'))
                                     <span class="help-block">
