@@ -142,7 +142,7 @@
 
                             <div class="col-md-10">
                                 <input id="reference" type="file" class="form-control" name="reference" value="{{ old('reference') }}">
-                                <p class="files">Supported file format: jpg, jpeg, png, pdf, xlxs, xlx, ppt, pptx, csv</p>    
+                                <p class="files">Supported file format: jpg, jpeg, png, pdf, xlsx, xlx, ppt, pptx, csv</p>    
                                @if ($errors->has('reference'))
                                     <span class="help-block">
                                     <strong><span class="error">{{ $errors->first('reference') }}</span></strong>

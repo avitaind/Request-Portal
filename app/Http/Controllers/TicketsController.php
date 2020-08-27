@@ -72,7 +72,7 @@ class TicketsController extends Controller
             'category'  => 'required',
             'priority'  => 'required',
             'summary'   => 'required',
-            'reference' => 'mimes:jpg,jpeg,png,pdf,xlxs,xlx,ppt,pptx,csv|max:30720',
+            'reference' => 'mimes:jpg,jpeg,png,pdf,xlsx,xlx,ppt,pptx,csv|max:30720',
                       
         ]);
  
