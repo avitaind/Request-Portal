@@ -46,7 +46,7 @@
                                <option value="india">INDIA</option>
                                <option value="bangladesh">BANGLADESH</option>
                                <option value="mauritius">MAURITIUS</option>
-                               <option value="shrilanka">SHRI LANKA</option>
+                               <option value="srilanka">SRI LANKA</option>
                                <option value="nepal">NEPAL</option>
 
                                 </select>
