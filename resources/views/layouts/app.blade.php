@@ -117,8 +117,13 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Dashboard <span class="caret"></span>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            @if(Auth::guard('admin')->check())
+                               {{Auth::guard('admin')->user()->name}}
+                            @elseif(Auth::guard('client')->check())
+                              {{Auth::guard('client')->user()->name}}
+                            @endif
+                            <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -127,14 +132,21 @@
                                  <a class="dropdown-item" href="{{ url('new_ticket') }}">
                                     {{ __('New Ticket') }}
                                 </a>
-
+                                @if(Auth::guard('admin')->check())
                             
-                                <a class="dropdown-item" href="{{ url()->previous() }}">
+                               <a class="dropdown-item" href="{{ url('show_ticket') }}">
                                 
-                                    {{ __('View Ticket') }}
+                                    {{ __('Show Ticket') }}
                                 </a>
-                        
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                
+                              @elseif(Auth::guard('client')->check())
+
+                                <a class="dropdown-item" href="{{ url('view_ticket') }}">
+
+                                  {{ __('View Ticket') }}
+                                </a>
+                                @endif
+                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}

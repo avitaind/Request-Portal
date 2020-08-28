@@ -98,10 +98,11 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-              <!--  <a class="navbar-brand" href="{{ url('home') }}">
-                 <img src="{{ asset('images/logo.png') }}" style="width:75px;">
+                <a class="navbar-brand" href="{{ url('home') }}">
+              
+                    <img src="{{ asset('images/logo.png') }}" style="width:75px;">
+              
                 </a>
-                --->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -117,18 +118,36 @@
                         <!-- Authentication Links -->
                        <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Dashboard <span class="caret"></span>
+                            @if(Auth::guard('admin')->check())
+                               {{Auth::guard('admin')->user()->name}}
+                            @elseif(Auth::guard('client')->check())
+                              {{Auth::guard('client')->user()->name}}
+                            @else
+                            {{ __('Dashboard') }}
+                            @endif
+                            <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                               
-                                <a class="dropdown-item" href="{{ url('new_ticket') }}">
+                             
+
+                                 <a class="dropdown-item" href="{{ url('new_ticket') }}">
                                     {{ __('New Ticket') }}
                                 </a>
-                                <a class="dropdown-item" href="{{ url('view_ticket') }}">
-                                    {{ __('View Ticket') }}
-                                </a>
+                                @if(Auth::guard('admin')->check())
+                            
+                            <a class="dropdown-item" href="{{ url('show_ticket') }}">
+                             
+                                 {{ __('Show Ticket') }}
+                             </a>
+                             
+                           @elseif(Auth::guard('client')->check())
 
+                             <a class="dropdown-item" href="{{ url('view_ticket') }}">
+
+                               {{ __('View Ticket') }}
+                             </a>
+                             @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
@@ -139,6 +158,8 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
+
+
                             </div>
 
                             
