@@ -43,14 +43,15 @@
                             <td>{{ ucfirst(trans($ticket_detail->priority)) }}</td>
                         </tr>
                         
-                         <tr>
+                        <tr>
                             <th scope="col">Summary:</th>
-                            <td>{{ ucfirst(trans($ticket_detail->summary)) }}</td>
+                            <td>{!! $ticket_detail->summary !!}</td>
                          </tr>
                          <tr>
                              <th scope="col">Objective:</th>
-                             <td>{{ ucfirst(trans($ticket_detail->objective)) }}</td>
+                             <td>{!! $ticket_detail->objective !!}</td>
                          </tr>
+               
                
                         <tr>
                         @if($ticket_detail->reference!='')
