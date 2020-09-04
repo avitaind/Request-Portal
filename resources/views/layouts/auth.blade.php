@@ -138,22 +138,22 @@
                             
                             <a class="dropdown-item" href="{{ url('show_ticket') }}">
                              
-                                 {{ __('Show Ticket') }}
+                                 {{ __('Tickets') }}
                              </a>
                              
                            @elseif(Auth::guard('client')->check())
 
                              <a class="dropdown-item" href="{{ url('view_ticket') }}">
 
-                               {{ __('View Ticket') }}
+                               {{ __('Tickets') }}
                              </a>
                              @endif
                              <a class="dropdown-item" href="{{ url('view_revision') }}">
                                 
-                                {{ __('View Revision') }}
+                                {{ __('Revisions') }}
                                </a>
                                <a class="dropdown-item" href="{{ url('view_edit') }}">
-                               {{ __('View Edit') }}
+                               {{ __('Edits') }}
                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
