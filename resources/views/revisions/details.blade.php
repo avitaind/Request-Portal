@@ -17,7 +17,7 @@
 
                          <tr>
                              <th scope="col">Revision No.:</th>
-                             <td>ADNESEA{{ $num = sprintf('%03d', intval($revision_detail->jobno))}}-R{{ $num = sprintf('%03d', intval($revision_detail->jobno))}}</td>
+                             <td>ADNESEA{{ $num = sprintf('%03d', intval($revision_detail->jobno))}}-R{{ $num = sprintf('%02d', intval($revision_detail->id))}}</td>
                          </tr>
 
                         <tr>

@@ -17,7 +17,7 @@
 
                          <tr>
                              <th scope="col">Edit Id:</th>
-                             <td>ADNESEA{{ $num = sprintf('%03d', intval($edit_detail->jobno))}}-E{{ $num = sprintf('%03d', intval($edit_detail->jobno))}}</td>
+                             <td>ADNESEA{{ $num = sprintf('%03d', intval($edit->jobno))}}-E{{ $num = sprintf('%02d', intval($edit->id)) }}</td>
                          </tr>
 
                         <tr>
