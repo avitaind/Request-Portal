@@ -148,6 +148,13 @@
                                {{ __('View Ticket') }}
                              </a>
                              @endif
+                             <a class="dropdown-item" href="{{ url('view_revision') }}">
+                                
+                                {{ __('View Revision') }}
+                               </a>
+                               <a class="dropdown-item" href="{{ url('view_edit') }}">
+                               {{ __('View Edit') }}
+                               </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">

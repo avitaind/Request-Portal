@@ -18,7 +18,7 @@
                              <td>{{ date('d-m-Y', strtotime($ticket_detail->created_at)) }}</td>
                          </tr>
                         <tr>
-                             <th scope="col">Job No:</th>
+                             <th scope="col">SRN:</th>
                              <td>ADNESEA{{ $num = sprintf('%03d', intval($ticket_detail->no))}}</td>
                          </tr>
                

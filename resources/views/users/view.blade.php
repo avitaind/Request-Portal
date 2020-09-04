@@ -12,7 +12,7 @@
             <thead>
                 <tr>
                    <th scope="col">Date</th>
-                    <th scope="col">Job No</th>
+                    <th scope="col">SRN</th>
                     <th scope="col">Brand</th>
                     <th scope="col">Project Title</th>
                     <th scope="col">Category</th>

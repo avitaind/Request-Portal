@@ -3,19 +3,21 @@
 @section('title', 'Open Ticket')
 
 @section('content')
+@include('revisions.index')
+@include('edits.index')
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
+        @include('includes.revision')
 
-     
-        <table class="table table-hover">
-                       <tr>
+            <table class="table table-hover">
+                         <tr>
                              <th scope="col">Date:</th>
                              <td>{{ date('d-m-Y', strtotime($ticket_detail->created_at)) }}</td>
                          </tr>
                         <tr>
-                             <th scope="col">Job No:</th>
+                             <th scope="col">SRN:</th>
                              <td>ADNESEA{{ $num = sprintf('%03d', intval($ticket_detail->no))}}</td>
                          </tr>
                
@@ -81,10 +83,10 @@
                  </tr>
 
                  
-                <tr>
-                 <th scope="col">Status:</th>
-                <td>{!! $ticket_detail->status !!}</td>
-                 </tr>
+                  <tr>
+                    <th scope="col">Status:</th>
+                     <td>{!! $ticket_detail->status !!}</td>
+                  </tr>
 
 
                  <tr>
@@ -94,10 +96,17 @@
                   
                  </td>
                  <td>
+
+                 @if($ticket_detail->status=='closed')
+
                  <div class="col">
-                    <a href="{{ url('view_ticket') }}" class="btn btn-primary">Back to Menu</a>
+                    <a class="nav-link btn btn-primary" style="cursor: pointer; color:#fff; width:50%;" data-toggle="modal" data-target="#revisionModal">{{ __('Request Review') }}</a>
                   </div>
-                  
+                  @else
+                  <div class="col">
+                    <a class="nav-link btn btn-primary" style="cursor: pointer; color:#fff; width:50%;" data-toggle="modal" data-target="#editModal">{{ __('Request Edits') }}</a>
+                  </div>
+                  @endif
                  </td>
                  
                  </tr>

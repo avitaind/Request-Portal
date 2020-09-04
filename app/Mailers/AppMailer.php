@@ -2,6 +2,8 @@
 namespace App\Mailers;
 
 use App\Ticket;
+use App\Revision;
+use App\Edit;
 use Illuminate\Contracts\Mail\Mailer;
 use App\Client;
 use DB;
@@ -19,6 +21,8 @@ class AppMailer {
     {
         $this->mailer = $mailer;
     }
+
+    //ticket information
 
     public function sendTicketInformation($user, Ticket $ticket)
     {
@@ -39,6 +43,42 @@ class AppMailer {
         return $this->deliver();
     }
 
+    //revision
+
+    public function sendRevisionInformation($user, Revision $revision)
+    {
+        $number = DB::table('revisions')
+        ->orderBy('created_at','desc')
+        ->first();
+      
+       $num = sprintf('%02d', intval($number->id));
+
+        $this->to = ['sandeep.rawat@ashplan.media'];
+        $this->subject = "[REVISION ADNESEA$number->jobno-R$num] $revision->title";
+        $this->view = 'emails.revision_info';
+        $this->data = compact('user', 'revision');
+
+        return $this->deliver();
+    }
+
+
+    //edits
+
+    public function sendEditInformation($user, Edit $edit)
+    {
+        $number = DB::table('edits')
+        ->orderBy('created_at','desc')
+        ->first();
+      
+       $num = sprintf('%02d', intval($number->id));
+
+       $this->to = ['sandeep.rawat@ashplan.media'];
+       $this->subject = "[EDIT ADNESEA$number->jobno-E$num] $edit->title";
+       $this->view = 'emails.edit_info';
+        $this->data = compact('user', 'edit');
+
+        return $this->deliver();
+    }
     public function deliver()
     {
         $this->mailer->send($this->view, $this->data, function($message) {
