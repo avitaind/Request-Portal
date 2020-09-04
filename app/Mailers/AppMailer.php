@@ -53,7 +53,7 @@ class AppMailer {
       
        $num = sprintf('%02d', intval($number->id));
 
-        $this->to = ['sandeep.rawat@ashplan.media'];
+       $this->to = ['aman.sharma@ashplan.media','info@ashplan.media'];
         $this->subject = "[REVISION ADNESEA$number->jobno-R$num] $revision->title";
         $this->view = 'emails.revision_info';
         $this->data = compact('user', 'revision');
@@ -72,7 +72,7 @@ class AppMailer {
       
        $num = sprintf('%02d', intval($number->id));
 
-       $this->to = ['sandeep.rawat@ashplan.media'];
+       $this->to = ['aman.sharma@ashplan.media','info@ashplan.media'];
        $this->subject = "[EDIT ADNESEA$number->jobno-E$num] $edit->title";
        $this->view = 'emails.edit_info';
         $this->data = compact('user', 'edit');
