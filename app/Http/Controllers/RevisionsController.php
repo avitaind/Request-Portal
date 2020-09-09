@@ -26,7 +26,7 @@ class RevisionsController extends Controller
             $fileName="";
             $this->validate($request, [
                 'comments'  => 'required',
-                'reference' => 'mimes:jpg,jpeg,png,pdf,xlsx,xlx,ppt,pptx,csv,zip|max:307200',
+                'reference' => 'mimes:jpg,jpeg,png,pdf,xlsx,xlx,ppt,pptx,csv,zip',
                           
             ]);
      
