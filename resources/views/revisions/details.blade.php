@@ -12,7 +12,7 @@
         <table class="table table-hover">
                        <tr>
                         <th scope="col">Date:</th>
-                             <td>{{ date('d-m-Y', strtotime($revision_detail->created_at)) }}</td>
+                             <td>{{ date('d/m/Y h:i:s a', strtotime($revision_detail->created_at)) }} </td>
                          </tr>
 
                          <tr>
@@ -28,7 +28,7 @@
                       
                         <tr>
                             <th scope="col">Comment:</th>
-                            <td>{!! $revision_detail->comments !!}</td>
+                            <td>{!! nl2br($revision_detail->comments) !!}</td>
                          </tr>
                   
                

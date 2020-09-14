@@ -15,7 +15,7 @@
                  <table class="table table-hover">
                        <tr>
                              <th scope="col">Date:</th>
-                             <td>{{ date('d-m-Y', strtotime($ticket_detail->created_at)) }}</td>
+                             <td>{{ date('d/m/Y h:i:s a', strtotime($ticket_detail->created_at)) }} </td>
                          </tr>
                         <tr>
                              <th scope="col">SRN:</th>
@@ -48,7 +48,7 @@
                         
                          <tr>
                             <th scope="col">Summary:</th>
-                            <td>{!! $ticket_detail->summary !!}</td>
+                            <td>{!! nl2br($ticket_detail->summary) !!}</td>
                          </tr>
                          <tr>
                              <th scope="col">Objective:</th>
