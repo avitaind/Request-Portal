@@ -100,6 +100,7 @@
                                <option value="open">Open</option>
                                <option value="processing">Processing</option>
                                <option value="pending">Pending (from Client)</option>
+                               <option value="canceled">Canceled</option>
                                <option value="closed">Closed</option>
                              </select>
                               @if ($errors->has('status'))

@@ -24,7 +24,6 @@ class TicketsController extends Controller
     public function create()
     {
         $categories = Category::all();
-    
         return view('users.create', compact('categories'));
     }
 
@@ -48,15 +47,23 @@ class TicketsController extends Controller
 
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, AppMailer $mailer)
     {
-      
+
+        //$ticket = Ticket::all();
         $deadline = $request->input('deadline');
         $status = $request->input('status');
-      
-       DB::update('update tickets set deadline = ?, status = ? where no = ?', [$deadline, $status, $id]);
-       $num = sprintf('%03d', intval($id));
-       return redirect()->back()->with("status", "Your SRN: ADNESEA$num has been updated.");
+
+        DB::update('update tickets set deadline = ?, status = ? where no = ?', [$deadline, $status, $id]);
+        $num = sprintf('%03d', intval($id));
+
+       if($request->input('status')=="closed")
+         {
+            $mailer->sendStatusInformation(Auth::user());
+        
+         }
+    
+        return redirect()->back()->with("status", "Your SRN: ADNESEA$num has been updated.");
 
     }
    

@@ -43,6 +43,27 @@ class AppMailer {
         return $this->deliver();
     }
 
+    //Ticket Update information
+    public function sendStatusInformation($user)
+      {
+        $ticket = Ticket::first();
+
+        $number = DB::table('tickets')
+        ->orderBy('created_at','desc')
+        ->first();
+      
+      
+        $num = sprintf('%03d', intval($number->no));
+        $this->to = ['sandeep.rawat@ashplan.media'];
+        $this->subject = "[SRN $ticket->job$num] $ticket->title";
+        $this->view = 'emails.status_info';
+        $this->data = compact('user', 'ticket');
+
+        return $this->deliver();
+    
+        }
+
+
     //revision
 
     public function sendRevisionInformation($user, Revision $revision)
