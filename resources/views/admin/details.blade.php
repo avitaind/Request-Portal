@@ -111,6 +111,27 @@
                                </div>
                             </td>
                          </tr>
+
+                         <tr>
+                            <th scope="col">Creative for Approval:</th>
+                            <td>
+                            <div class="form-group{{ $errors->has('creative') ? ' has-error' : '' }}">
+                            <label for="creative" class="col-md-10 control-label">Upload Creative for Client Approval</label>
+                            <div class="col-md-10">
+                                <input id="creative" type="file" class="form-control" name="creative" value="{{ old('creative') }}">
+                                <p class="files">Supported file format: jpg, jpeg, png, pdf, xlsx, xlx, ppt, pptx, csv, zip</p>    
+                               @if ($errors->has('reference'))
+                                    <span class="help-block">
+                                    <strong><span class="error">{{ $errors->first('creative') }}</span></strong>
+                                    </span>
+                                @endif
+                                
+                                 </div>
+                              </div>
+                            </td>
+                         </tr>
+
+
                          <tr>
                             <td>
                             

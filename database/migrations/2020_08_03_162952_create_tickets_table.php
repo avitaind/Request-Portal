@@ -28,6 +28,7 @@ class CreateTicketsTable extends Migration
             $table->string('otherinfo')->nullable();
             $table->string('deadline')->nullable()->default('N/A');
             $table->string('status')->nullable()->default('N/A');
+            $table->string('creative')->nullable();
             $table->timestamps();
         });
     }

@@ -11,6 +11,11 @@
         <div class="col-md-10">
         @include('includes.revision')
 
+        @include('includes.flash')
+                  <form class="form-horizontal" role="form" action="/update/{{  $ticket_detail->no }}" method="POST">
+                   {!! csrf_field() !!}
+
+      
             <table class="table table-hover">
                          <tr>
                              <th scope="col">Date:</th>
@@ -72,7 +77,7 @@
                             <th scope="col">Other Information:</th>
                             <td>{!! $ticket_detail->otherinfo !!}</td>
                          </tr>
-               
+                       
 
                <!--- form  --->
 
@@ -87,29 +92,60 @@
                     <th scope="col">Status:</th>
                      <td>{!! $ticket_detail->status !!}</td>
                   </tr>
-      <!--- form  --->
 
-                 <tr>
+          <!--- form  --->
+             <tr>
+               <th scope="col">Creative for Approval:</th>
+               <td>
+               <div class="row justify-content-center">
+               <div class="col-md-6">
+               @if($ticket_detail->reference!='')
+                        
+               <a href="{{ '/'.$ticket_detail->creative}}" target="_blank" download="{!! $ticket_detail->creative !!}">Download Creative</a>
+               @else
+               <span>N/A</span>
+               @endif
+              </div>
+              <div class="col-md-3">
+              Approved
+              </div>
+              <div class="col-md-3">
+              Rejected
+              </div>
+              </div>
                
-                 <td>
-                 
-                  
-                 </td>
-                 <td>
+               </td>
+              </tr>
+          
+
+
+
+
+
+           <tr>
+             <td>
+                </td>
+                   <td>
+                 <div class="row justify-content-center">
+              
+                <div class="col-md-8">
 
                  @if($ticket_detail->status=='closed')
 
-                 <div class="col">
-                    <a class="nav-link btn btn-primary" style="cursor: pointer; color:#fff; width:50%;" data-toggle="modal" data-target="#revisionModal">{{ __('Request Review') }}</a>
-                  </div>
+              
+                    <a class="nav-link btn btn-primary" style="cursor: pointer; color:#fff;" data-toggle="modal" data-target="#revisionModal">{{ __('Request Review') }}</a>
+                
                   @else
-                  <div class="col">
-                    <a class="nav-link btn btn-primary" style="cursor: pointer; color:#fff; width:50%;" data-toggle="modal" data-target="#editModal">{{ __('Request Edits') }}</a>
-                  </div>
+                
+                    <a class="nav-link btn btn-primary" style="cursor: pointer; color:#fff;" data-toggle="modal" data-target="#editModal">{{ __('Request Edits') }}</a>
+                
                   @endif
+                  </div>
+                  </div>
                  </td>
                  
                  </tr>
+              
           </table>
 
            </div>

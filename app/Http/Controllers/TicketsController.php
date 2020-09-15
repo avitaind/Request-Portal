@@ -49,12 +49,22 @@ class TicketsController extends Controller
 
     public function update(Request $request, $id, AppMailer $mailer)
     {
+        $fileName="";
+        $this->validate($request, [
+            'creative' => 'mimes:jpg,jpeg,png,pdf,xlsx,xlx,ppt,pptx,csv,zip',
+                      
+        ]);
 
-        //$ticket = Ticket::all();
+        if($request->hasFile('creative')){
+            $image = $request->file('creative')->getClientOriginalName();
+            $fileName = $request->reference->move(date('mdYHis').'uploads', $image);
+            
+        }
         $deadline = $request->input('deadline');
         $status = $request->input('status');
+        $creative = $fileName;
 
-        DB::update('update tickets set deadline = ?, status = ? where no = ?', [$deadline, $status, $id]);
+        DB::update('update tickets set deadline = ?, status = ?, creative = ? where no = ?', [$deadline, $status, $id]);
         $num = sprintf('%03d', intval($id));
 
        if($request->input('status')=="closed")
