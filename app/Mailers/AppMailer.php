@@ -54,7 +54,7 @@ class AppMailer {
       
       
         $num = sprintf('%03d', intval($number->no));
-        $this->to = ['contact@ashplan.media'];
+        $this->to = ['contact@ashplan.media','manvi.anand@avita-india.com'];
         $this->subject = "[SRN $ticket->job$num] $ticket->title";
         $this->view = 'emails.status_info';
         $this->data = compact('user', 'ticket');

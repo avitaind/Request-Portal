@@ -87,7 +87,7 @@
                     <th scope="col">Status:</th>
                      <td>{!! $ticket_detail->status !!}</td>
                   </tr>
-
+      <!--- form  --->
 
                  <tr>
                
