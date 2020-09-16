@@ -57,14 +57,14 @@ class TicketsController extends Controller
 
         if($request->hasFile('creative')){
             $image = $request->file('creative')->getClientOriginalName();
-            $fileName = $request->reference->move(date('mdYHis').'uploads', $image);
+            $fileName = $request->creative->move(date('mdYHis').'uploads', $image);
             
         }
         $deadline = $request->input('deadline');
         $status = $request->input('status');
         $creative = $fileName;
 
-        DB::update('update tickets set deadline = ?, status = ?, creative = ? where no = ?', [$deadline, $status, $id]);
+        DB::update('update tickets set deadline = ?, status = ?, creative = ? where no = ?', [$deadline, $status, $creative, $id]);
         $num = sprintf('%03d', intval($id));
 
        if($request->input('status')=="closed")
@@ -151,5 +151,24 @@ class TicketsController extends Controller
         $ticket->delete();
         return redirect()->view('view_ticket');
 
+    }
+
+    //Approval and Rejection
+
+    public function approve(Request $request)
+    { 
+        $id = request('id');
+
+       // DB::insert('insert into mides_users(name, email, password) select name,roc_no,password from mides_vendors where id = :id', ['id' => $id]);
+        DB::update('update tickets set creative_status = :status where no = :id', ['status' => 'Approved', 'id' => $id]);
+
+        return redirect()->back()->with("status", "Thank you for approving the creative.");
+    }
+
+    public function reject(Request $request)
+    {
+        $id = request('id');
+        DB::update('update tickets set creative_status = :status where no = :id', ['status' => 'Rejected', 'id' => $id]);
+        return redirect()->back()->with("status", "Thank you for sharing your feedback, We will share new reference soon");
     }
 }

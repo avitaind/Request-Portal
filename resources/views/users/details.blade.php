@@ -11,11 +11,6 @@
         <div class="col-md-10">
         @include('includes.revision')
 
-        @include('includes.flash')
-                  <form class="form-horizontal" role="form" action="/update/{{  $ticket_detail->no }}" method="POST">
-                   {!! csrf_field() !!}
-
-      
             <table class="table table-hover">
                          <tr>
                              <th scope="col">Date:</th>
@@ -99,29 +94,37 @@
                <td>
                <div class="row justify-content-center">
                <div class="col-md-6">
-               @if($ticket_detail->reference!='')
+               @if($ticket_detail->creative!='')
                         
                <a href="{{ '/'.$ticket_detail->creative}}" target="_blank" download="{!! $ticket_detail->creative !!}">Download Creative</a>
-               @else
+               </div>
+               <div class="col-md-6">
+              <div class="modal-footer">
+                <span class="pull-left">
+                       <form method="POST" role="form" action="{{ route('approve', $ticket_detail->no) }}">
+                          <input type="hidden" name="id" value="{{ $ticket_detail->no }}">
+                           @csrf
+                             <button type="submit" class="btn btn-success">Approve</button>
+                       </form>
+                </span>
+                <span class="pull-right">
+                 <form method="POST" role="form" action="{{ route('reject', $ticket_detail->no) }}">
+                 @csrf
+                   <input type="hidden" name="id" value="{{ $ticket_detail->no}}">
+                  <button type="submit" class="btn btn-danger">Reject</button>
+                 </form>
+               </span>
+            </div>
+            
+    
+            </div>
+                     
+          </div>
+          @else
                <span>N/A</span>
                @endif
-              </div>
-              <div class="col-md-3">
-              Approved
-              </div>
-              <div class="col-md-3">
-              Rejected
-              </div>
-              </div>
-               
-               </td>
-              </tr>
-          
-
-
-
-
-
+       </td>
+    </tr>
            <tr>
              <td>
                 </td>

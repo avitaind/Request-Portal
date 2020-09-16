@@ -9,7 +9,7 @@
        <div class="col-md-10">
            <div class="panel-body">
            @include('includes.flash')
-                  <form class="form-horizontal" role="form" action="/update/{{  $ticket_detail->no }}" method="POST">
+                  <form class="form-horizontal" role="form" action="/update/{{  $ticket_detail->no }}" method="POST" enctype="multipart/form-data">
                    {!! csrf_field() !!}
 
                  <table class="table table-hover">
@@ -60,7 +60,9 @@
                         
                         <th scope="col">Reference:</th>
                         
-                        <td><a href="{{ '/'.$ticket_detail->reference}}" target="_blank" download="{!! $ticket_detail->reference !!}">Download File</a></td>
+                        <td>                        
+                        <a href="{{ '/'.$ticket_detail->reference}}" target="_blank" download="{!! $ticket_detail->reference !!}">Download File</a>
+                         </td>
                             @else
                             <th scope="col">Reference:</th>
                             <td>N/A</td>
@@ -111,8 +113,16 @@
                                </div>
                             </td>
                          </tr>
-
+                         @if($ticket_detail->creative_status!='')
                          <tr>
+                            <th scope="col">Creative Status:</th>
+                            <td>
+                            {!! $ticket_detail->creative_status !!}
+                            </td>
+                          </tr>
+                         @else
+                         <tr>
+                         
                             <th scope="col">Creative for Approval:</th>
                             <td>
                             <div class="form-group{{ $errors->has('creative') ? ' has-error' : '' }}">
@@ -130,7 +140,7 @@
                               </div>
                             </td>
                          </tr>
-
+                    @endif
 
                          <tr>
                             <td>
