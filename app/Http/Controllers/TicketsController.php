@@ -11,6 +11,7 @@ use Storage;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Ticket;
+use App\Comment;
 use Faker\Provider\Image;
 use App\Mailers\AppMailer;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
@@ -130,9 +131,11 @@ class TicketsController extends Controller
 
     public function viewTicketDetail($slug){
 
-        $ticket_detail = Ticket::where('no', $slug)->get()->first();
+        $ticket = Ticket::where('no', $slug)->firstOrFail();
+        return view('users.details', compact('ticket'));
 
-        return view('users.details', compact('ticket_detail'));
+        //$ticket_detail = Ticket::where('no', $slug)->get()->first();
+        //return view('users.details', compact('ticket_detail'));
     }
 
 
@@ -142,6 +145,9 @@ class TicketsController extends Controller
         $ticket_detail = Ticket::where('no', $slug)->get()->first();
 
         return view('admin.details', compact('ticket_detail'));
+
+        //
+      
     }
 
   
@@ -170,5 +176,15 @@ class TicketsController extends Controller
         $id = request('id');
         DB::update('update tickets set creative_status = :status where no = :id', ['status' => 'Rejected', 'id' => $id]);
         return redirect()->back()->with("status", "Thank you for sharing your feedback, We will share new reference soon");
+    }
+
+    public function close($ticket_id, AppMailer $mailer)
+    {
+        $ticket = Ticket::where('ticket_id', $ticket_id)->firstOrFail();
+        $ticket->status = "Closed";
+        $ticket->save();
+        $ticketOwner = $ticket->user;
+        $mailer->sendTicketStatusNotification($ticketOwner, $ticket);
+        return redirect()->back()->with("status", "The ticket has been closed.");
     }
 }

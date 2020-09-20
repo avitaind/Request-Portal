@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ticket extends Model
 {
     protected $fillable = [
-        'job','no', 'brand', 'country', 'title', 'category_name', 'priority', 'summary', 'objective', 'reference', 'otherinfo'
+        'job','no', 'brand', 'country', 'title', 'category_name', 'priority', 'summary', 'objective', 'reference', 'otherinfo', 'comments'
     ];
     // Ticket.php file
 
@@ -16,5 +16,11 @@ class Ticket extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+ 
     
 }

@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="editModal">Edit for ADNESEA{{ $num = sprintf('%03d', intval($ticket_detail->no))}}</h5> 
+              <h5 class="modal-title" id="editModal">Edit for ADNESEA{{ $num = sprintf('%03d', intval($ticket->no))}}</h5> 
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
@@ -11,7 +11,7 @@
 
             <div class="modal-body">
 
-                    <form class="form-horizontal" role="form" method="POST" action="/new_edit/{{$ticket_detail->no}}"  enctype="multipart/form-data" >
+                    <form class="form-horizontal" role="form" method="POST" action="/new_edit/{{$ticket->no}}"  enctype="multipart/form-data" >
 
                         {!! csrf_field() !!}
                                 

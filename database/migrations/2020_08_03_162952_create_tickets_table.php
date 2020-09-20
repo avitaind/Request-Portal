@@ -30,6 +30,7 @@ class CreateTicketsTable extends Migration
             $table->string('status')->nullable()->default('N/A');
             $table->string('creative')->nullable();
             $table->string('creative_status')->nullable();
+            $table->string('comments')->nullable();
             $table->timestamps();
         });
     }
