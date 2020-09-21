@@ -6,6 +6,7 @@ use App\Revision;
 use App\Edit;
 use Illuminate\Contracts\Mail\Mailer;
 use App\Client;
+use App\Admin;
 use DB;
 
 class AppMailer {
@@ -45,8 +46,14 @@ class AppMailer {
 
     public function sendTicketComments($ticketOwner, $user, Ticket $ticket, $comment)
     {
+        $number = DB::table('tickets')
+        ->orderBy('created_at','desc')
+        ->first();
+      
+        $num = sprintf('%03d', intval($ticket->no));
+
         $this->to = ['sandeep.rawat@ashplan.media'];
-        $this->subject = "RE: $ticket->title (Ticket ID: $ticket->ticket_id)";
+        $this->subject = "RE: $ticket->title (Ticket ID: $ticket->job$num)";
         $this->view = 'emails.ticket_comments';
         $this->data = compact('ticketOwner', 'user', 'ticket', 'comment');
         return $this->deliver();
@@ -54,8 +61,15 @@ class AppMailer {
 
     public function sendTicketStatusNotification($ticketOwner, Ticket $ticket)
     {
+        $number = DB::table('tickets')
+        ->orderBy('created_at','desc')
+        ->first();
+      
+        $num = sprintf('%03d', intval($ticket->no));
+
+
         $this->to = ['sandeep.rawat@ashplan.media'];
-        $this->subject = "RE: $ticket->title (Ticket ID: $ticket->ticket_id)";
+        $this->subject = "RE: $ticket->title (Ticket ID: $ticket->job$num)";
         $this->view = 'emails.ticket_status';
         $this->data = compact('ticketOwner', 'ticket');
  

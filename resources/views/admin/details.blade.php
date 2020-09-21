@@ -14,11 +14,13 @@
 
                  <table class="table table-hover">
                        <tr>
-                             <th scope="col">Date:</th>
+                             <th scope="col">Date: </th>
+                             <input type="hidden" name="user_name" value="{!! Auth::guard('admin')->user()->name !!}">
                              <td>{{ date('d/m/Y h:i:s a', strtotime($ticket_detail->created_at)) }} </td>
                          </tr>
                         <tr>
                              <th scope="col">SRN:</th>
+                             <input type="hidden" name="ticket_id" value="{!! $ticket_detail->no !!}">
                              <td>ADNESEA{{ $num = sprintf('%03d', intval($ticket_detail->no))}}</td>
                          </tr>
                
@@ -158,15 +160,15 @@
                 
                 </table>
                 </form>
-                <!---
+               
                 <hr>
  
- @include('tickets.comments')
+        @include('tickets.comments')
 
- <hr>
+        <hr>
 
- @include('tickets.reply')
- --->
+        @include('tickets.reply')
+
              </div>   
           </div>
         </div>

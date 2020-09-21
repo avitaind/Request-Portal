@@ -9,7 +9,7 @@
     Hello {{ ucfirst($ticketOwner->name) }},
 </p>
 <p>
-    Your support ticket with ID #{{ $ticket->ticket_id }} has been marked has resolved and closed.
+    Your support ticket with ID #{{ $ticket->no }} has been marked has resolved and closed.
 </p>
 </body>
 </html>

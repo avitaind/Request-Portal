@@ -13,7 +13,7 @@
 <p>Replied by: {{ $user->name }}</p>
  
 <p>Title: {{ $ticket->title }}</p>
-<p>Ticket ID: {{ $ticket->ticket_id }}</p>
+<p>Ticket ID: {{ $ticket->no }}</p>
 <p>Status: {{ $ticket->status }}</p>
  
 <p>

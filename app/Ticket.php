@@ -21,6 +21,11 @@ class Ticket extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function status()
+    {
+        return $this->hasMany(Status::class);
+    }
  
     
 }
