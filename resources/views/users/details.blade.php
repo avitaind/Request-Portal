@@ -152,15 +152,7 @@
                  </tr>
               
           </table>
-      
-          <hr>
- 
-       @include('tickets.comments')
-
-         <hr>
-
-        @include('tickets.reply')
- 
+    
            </div>
 
 
