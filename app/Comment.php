@@ -1,15 +1,4 @@
 <?php
-<<<<<<< HEAD
-
-namespace App;
-
-use Illuminate\Database\Eloquent\Model;
-
-class Comment extends Model
-{
-    //
-}
-=======
  
 namespace App;
  
@@ -31,4 +20,4 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 }
->>>>>>> f3943cbf5f65ff5df09959aaaa01fe3574208545
+

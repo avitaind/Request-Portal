@@ -158,6 +158,7 @@
                 
                 </table>
                 </form>
+                <!---
                 <hr>
  
  @include('tickets.comments')
@@ -165,6 +166,7 @@
  <hr>
 
  @include('tickets.reply')
+ --->
              </div>   
           </div>
         </div>

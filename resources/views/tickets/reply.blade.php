@@ -7,7 +7,7 @@
                 <form action="{{ url('comment') }}" method="POST" class="form">
                     {!! csrf_field() !!}
  
-                    <input type="hidden" name="ticket_id" value="{{ $ticket->no }}">
+                    <input type="hidden" name="ticket_id" value="{{ $ticket_detail->no }}">
  
                     <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
                         <textarea rows="2" id="comment" class="form-control" name="comment"></textarea>
