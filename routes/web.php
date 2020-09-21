@@ -31,10 +31,10 @@ Route::group(['middleware' => ['auth:admin,client'] ], function(){
         
 
         Route::get('update_ticket', 'TicketsController@update'); 
-       Route::get('show_ticket', 'TicketsController@show');
+       //Route::get('show_ticket', 'TicketsController@show');
 
-        //Route::resource('show_ticket', 'ShowTicketController');
-        //Route::resource('view_ticket', 'ViewTicketController');
+        Route::resource('show_ticket', 'ShowTicketController');
+       // Route::resource('view_ticket', 'ViewTicketController');
 
 
         Route::post('/update/{id}', 'TicketsController@update');
