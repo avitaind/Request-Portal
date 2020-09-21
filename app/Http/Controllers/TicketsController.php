@@ -29,7 +29,7 @@ class TicketsController extends Controller
     }
 
 
-  /*  public function show()
+    public function show()
     {
         //$tickets = Ticket::all();
         $tickets = Ticket::latest()->orderBy('no', 'desc')->get();
@@ -47,7 +47,7 @@ class TicketsController extends Controller
 
     }
 
-*/
+
 
     public function update(Request $request, $id, AppMailer $mailer)
     {
@@ -132,11 +132,11 @@ class TicketsController extends Controller
 
     public function viewTicketDetail($slug){
 
-        $ticket = Ticket::where('no', $slug)->firstOrFail();
-        return view('users.details', compact('ticket'));
+        //$ticket = Ticket::where('no', $slug)->firstOrFail();
+        //return view('users.details', compact('ticket'));
 
-        //$ticket_detail = Ticket::where('no', $slug)->get()->first();
-        //return view('users.details', compact('ticket_detail'));
+        $ticket_detail = Ticket::where('no', $slug)->get()->first();
+        return view('users.details', compact('ticket_detail'));
     }
 
 
