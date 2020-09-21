@@ -55,4 +55,7 @@ Route::group(['middleware' => ['auth:admin,client'] ], function(){
     Route::post('/approve', 'TicketsController@approve')->name('approve');
     Route::post('/reject', 'TicketsController@reject')->name('reject');
 
+
+    Route::post('comment', 'CommentsController@postComment');
+
 });
