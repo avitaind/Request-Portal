@@ -11,6 +11,7 @@ use Storage;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Ticket;
+use App\Rejection;
 use App\Comment;
 use Faker\Provider\Image;
 use App\Mailers\AppMailer;
@@ -191,5 +192,32 @@ class TicketsController extends Controller
         $ticketOwner = $ticket->user;
         $mailer->sendTicketStatusNotification($ticketOwner, $ticket);
         return redirect()->back()->with("status", "The ticket has been closed.");
+    }
+
+    public function rejection(Request $request, $id)
+    {
+        $this->validate($request, [
+            'reason' => 'required',
+            'comments'  => 'required',
+                      
+        ]);
+
+        $rejection = new Rejection([
+            'jobno'     => $id,
+            'reason' => $request->input('reason'),
+            'comments'  => $request->input('comments'),
+
+        ]);
+        
+        $rejection->save();
+       // $mailer->sendRejectionInformation(Auth::user(), $rejection);
+        
+        $number = DB::table('revisions')
+        ->orderBy('created_at','desc')
+        ->first();
+      
+       $num = sprintf('%02d', intval($number->id));
+      return redirect()->back()->with("status", "SRN: ADNESEA$id-R$num has been rejected.");
+  
     }
 }

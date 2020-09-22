@@ -41,6 +41,8 @@ Route::group(['middleware' => ['auth:admin,client'] ], function(){
 
         Route::post('/update/{id}', 'TicketsController@update');
       //  Route::get('view_ticket', 'TicketsController@view');
+      Route::post('/reject_request/{id}', 'TicketsController@rejection');
+
 //revisions
         Route::post('/new_revision/{id}', 'RevisionsController@store');
         Route::get('view_revision', 'RevisionsController@view');

@@ -3,7 +3,7 @@
 @section('title', 'Open Ticket')
 
 @section('content')
-
+@include('status.index')
 <div class="container">
     <div class="row justify-content-center">
        <div class="col-md-10">
@@ -99,7 +99,7 @@
                             <th scope="col">Status:</th>
                             <td>
                             <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
-                            <select id="status" type="status" class="form-control" name="status">
+                            <select id="status" onchange="onDropdownSelect();" type="status" class="form-control" name="status">
                             <option value="">Select Status</option>
                                  @foreach($statuses as $status)
                                    <option value="{{ $status->name }}">{{ $status->name }}</option>
@@ -164,16 +164,16 @@
           </div>
         </div>
     </div>
+    
+    <script>
+	function onDropdownSelect() {
+    	var selectedValue = document.getElementById("status").value;
+        if(selectedValue == 'Rejected') {
+            $("#rejectModal").modal();
+
+        }
+    }
+</script>
    
 @endsection
 
-@section('js')
-<script>  
-$(document).ready(function(){
-    $("status").on('change', function() {
-          alert($(this).val());
-    });
-});
-</Script>	
-
-@endsection
