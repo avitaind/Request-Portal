@@ -9,7 +9,11 @@
    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" /> 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-
+<style>
+div.dataTables_wrapper div.dataTables_filter{
+   display:none!important;
+}
+</style>
     <!-- Styles -->
 
  </head>
@@ -33,13 +37,7 @@
        <th>Date</th>
        <th>SRN</th>
        <th>Brand</th>
-     
-       <th>
-     
-         Project Title
-       
-      </th>
-   
+       <th>Project Title</th>
        <th>Category</th>
        <th>Priority</th>
        <th>
