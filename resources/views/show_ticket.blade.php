@@ -33,7 +33,7 @@
        <th>Date</th>
        <th>SRN</th>
        <th>Brand</th>
-       <th>Project Title</th>
+       <th id="title">Project Title</th>
        <th>Category</th>
        <th>Priority</th>
        <th>
@@ -44,6 +44,7 @@
              @endforeach
         </select>
        </th>
+     
     </tr>
      </thead>
     </table>
@@ -69,7 +70,7 @@ $(document).ready(function(){
    ajax: {
     url:"{{ route('show_ticket.index') }}",
     data: {
-            status:status
+            status:status,           
          }
    },
    columns:[
@@ -87,7 +88,13 @@ $(document).ready(function(){
     },
     {
      data: 'title',
-     name: 'title',     
+     name: 'title',
+     fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+        @foreach( $tickets as $ticket )
+            $(nTd).html("<a href='{{ route('ticket.detail',$ticket->no) }}'>"+oData.title+"</a>");
+         @endforeach
+   
+        }
     },
     {
      data: 'name',
@@ -102,7 +109,7 @@ $(document).ready(function(){
      name:'status',
      orderable: false
     },
-
+ 
    ]
   });
  }
