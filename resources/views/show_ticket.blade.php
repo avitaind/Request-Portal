@@ -33,7 +33,13 @@
        <th>Date</th>
        <th>SRN</th>
        <th>Brand</th>
-       <th id="title">Project Title</th>
+     
+       <th>
+     
+         Project Title
+       
+      </th>
+   
        <th>Category</th>
        <th>Priority</th>
        <th>
@@ -90,12 +96,9 @@ $(document).ready(function(){
      data: 'title',
      name: 'title',
      fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-        @foreach( $tickets as $ticket )
-            $(nTd).html("<a href='{{ route('ticket.detail',$ticket->no) }}'>"+oData.title+"</a>");
-         @endforeach
-   
-        }
-    },
+            $(nTd).html("<a href='/ticket/detail/"+oData.no+"'>"+oData.title+"</a>");  
+           }
+       },
     {
      data: 'name',
      name: 'name',

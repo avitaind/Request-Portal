@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth:admin,client'] ], function(){
 
         Route::resource('show_ticket', 'ShowTicketController');
        // Route::resource('view_ticket', 'ViewTicketController');
-
+       Route::get('/ticket/detail/{slug}', 'TicketsController@showTicketDetail');
 
         Route::post('/update/{id}', 'TicketsController@update');
         Route::get('view_ticket', 'TicketsController@view');
@@ -50,7 +50,7 @@ Route::group(['middleware' => ['auth:admin,client'] ], function(){
         Route::get('/edit/detail/{slug}', 'EditsController@viewEditDetail')->name('edit.detail');
 
         Route::get('/ticket/delete/{slug}', 'TicketsController@deleteTicketDetail')->name('ticket.delete');
-        Route::get('/ticket/detail/{slug}', 'TicketsController@showTicketDetail')->name('ticket.detail');
+       // Route::get('/ticket/detail/{slug}', 'TicketsController@showTicketDetail')->name('ticket.detail');
         Route::get('/ticket/status/{slug}', 'TicketsController@viewTicketDetail')->name('ticket.status');
     
 
