@@ -30,7 +30,7 @@ class AppMailer {
         //$this->to = $user->email;
 
         $number = DB::table('tickets')
-        ->orderBy('no','desc')
+        ->orderBy('created_at','desc')
         ->first();
       
         $num = sprintf('%03d', intval($number->no));
