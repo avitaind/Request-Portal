@@ -6,33 +6,34 @@ use DB;
 
 class ViewTicketController extends Controller
 {
+    //
    function index(Request $request)
-   {
-    if(request()->ajax())
     {
-     if($request->status)
+     if(request()->ajax())
      {
-      $data = DB::table('tickets')
-        ->join('categories', 'categories.name', '=', 'tickets.category_name')
-        ->select('tickets.no', 'tickets.title', 'categories.name', 'tickets.status')
-        ->where('tickets.status', $request->status);
-     }
-     else
-     {
-      $data = DB::table('tickets')
-        ->join('categories', 'categories.name', '=', 'tickets.category_name')
-        ->select('tickets.no', 'tickets.title', 'categories.name', 'tickets.status');
-     }
+      if($request->status)
+      {
+       $data = DB::table('tickets')
+         ->join('categories', 'categories.name', '=', 'tickets.category_name')
+         ->select('tickets.created_at', 'tickets.no',  'tickets.brand',  'tickets.title', 'categories.name',  'tickets.priority','tickets.status')
+         ->where('tickets.status', $request->status);
+       }
+      else
+      {
+       $data = DB::table('tickets')
+         ->join('categories', 'categories.name', '=', 'tickets.category_name')
+         ->select('tickets.created_at', 'tickets.no',  'tickets.brand',  'tickets.title', 'categories.name',  'tickets.priority','tickets.status');
+      }
+      return datatables()->of($data)->make(true);
 
-     return datatables()->of($data)->make(true);
     }
 
-   $statuses = DB::table('statuses')
-       ->select("*")
-       ->get();
+    $statuses = DB::table('statuses')
+        ->select("*")
+        ->get();
 
-    return view('view_ticket', compact('statuses'));
-    
-   }
+     return view('view_ticket', compact('statuses'));
+     
+    }
 
 }

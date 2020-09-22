@@ -34,11 +34,13 @@ Route::group(['middleware' => ['auth:admin,client'] ], function(){
        //Route::get('show_ticket', 'TicketsController@show');
 
         Route::resource('show_ticket', 'ShowTicketController');
-       // Route::resource('view_ticket', 'ViewTicketController');
+        Route::resource('view_ticket', 'ViewTicketController');
        Route::get('/ticket/detail/{slug}', 'TicketsController@showTicketDetail');
+       Route::get('/ticket/status/{slug}', 'TicketsController@viewTicketDetail');
+
 
         Route::post('/update/{id}', 'TicketsController@update');
-        Route::get('view_ticket', 'TicketsController@view');
+      //  Route::get('view_ticket', 'TicketsController@view');
 //revisions
         Route::post('/new_revision/{id}', 'RevisionsController@store');
         Route::get('view_revision', 'RevisionsController@view');
@@ -51,7 +53,7 @@ Route::group(['middleware' => ['auth:admin,client'] ], function(){
 
         Route::get('/ticket/delete/{slug}', 'TicketsController@deleteTicketDetail')->name('ticket.delete');
        // Route::get('/ticket/detail/{slug}', 'TicketsController@showTicketDetail')->name('ticket.detail');
-        Route::get('/ticket/status/{slug}', 'TicketsController@viewTicketDetail')->name('ticket.status');
+       // Route::get('/ticket/status/{slug}', 'TicketsController@viewTicketDetail')->name('ticket.status');
     
 
         //creative approve
