@@ -100,18 +100,18 @@
                             <td>
                             <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
                             <select id="status" type="status" class="form-control" name="status">
-                            <option value="">--- Select --- </option>
-                               <option value="open">Open</option>
-                               <option value="processing">Processing</option>
-                               <option value="pending">Pending (from Client)</option>
-                               <option value="closed">Closed</option>
+                            <option value="">Select Status</option>
+                                 @foreach($statuses as $status)
+                                   <option value="{{ $status->name }}">{{ $status->name }}</option>
+                                   @endforeach
                              </select>
                               @if ($errors->has('status'))
                                     <span class="help-block">
                                     <strong><span class="error">Job Status Can Not Be Empty</span></strong>
                                     </span>
                                 @endif
-                            
+                                <div id="rejected" class="status" style="display:none"> .... </div>
+
                                </div>
                             </td>
                          </tr>
@@ -158,11 +158,22 @@
                              </td>
                         </tr>
                 
-                </table>
+                     </table>
                 </form>
-     
              </div>   
           </div>
         </div>
     </div>
+   
+@endsection
+
+@section('js')
+<script>  
+$(document).ready(function(){
+    $("status").on('change', function() {
+          alert($(this).val());
+    });
+});
+</Script>	
+
 @endsection

@@ -117,8 +117,8 @@ class TicketsController extends Controller
            
       //    $fileName = $request->file('reference')->getClientOriginalName();
        //  $request->reference->move(public_path().'/uploads', $fileName);
-         $ticket->save();
-         
+       
+        $ticket->save();         
         $mailer->sendTicketInformation(Auth::user(), $ticket);
 
         $number = DB::table('tickets')
@@ -143,9 +143,13 @@ class TicketsController extends Controller
 
     public function showTicketDetail($slug){
 
-        $ticket_detail = Ticket::where('no', $slug)->get()->first();
 
-        return view('admin.details', compact('ticket_detail'));
+        $statuses = DB::table('statuses')
+        ->select("*")
+        ->get();
+
+        $ticket_detail = Ticket::where('no', $slug)->get()->first();
+        return view('admin.details', compact('ticket_detail', 'statuses'));
 
         //
       
