@@ -4,6 +4,7 @@ namespace App\Mailers;
 use App\Ticket;
 use App\Revision;
 use App\Edit;
+use App\Rejection;
 use Illuminate\Contracts\Mail\Mailer;
 use App\Client;
 use App\Admin;
@@ -109,11 +110,11 @@ class AppMailer {
        $num = sprintf('%02d', intval($number->id));
 
        $this->to = ['aman.sharma@ashplan.media','info@ashplan.media'];
-        $this->subject = "[REVISION ADNESEA$number->jobno-R$num] $revision->title";
-        $this->view = 'emails.revision_info';
-        $this->data = compact('user', 'revision');
+       $this->subject = "[REVISION ADNESEA$number->jobno-R$num] $revision->title";
+       $this->view = 'emails.revision_info';
+       $this->data = compact('user', 'revision');
 
-        return $this->deliver();
+       return $this->deliver();
     }
 
 
@@ -140,5 +141,22 @@ class AppMailer {
             $message->from($this->fromAddress, $this->fromName)
                     ->to($this->to)->subject($this->subject);
         });
+    }
+
+    public function sendRejectionInformation($user, Rejection $rejection)
+    {
+        $ticket = Ticket::first();
+        $number = DB::table('tickets')
+        ->orderBy('created_at','desc')
+        ->first();      
+      
+        $num = sprintf('%03d', intval($number->no));
+        $this->to = ['sandeep.rawat@ashplan.media'];
+        $this->subject = "[SRN $ticket->job$num] $ticket->title";
+        $this->view = 'emails.rejection_info';
+        $this->data = compact('user', 'rejection');
+ 
+         return $this->deliver();
+
     }
 }

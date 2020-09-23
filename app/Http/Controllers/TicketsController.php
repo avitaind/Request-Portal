@@ -194,7 +194,7 @@ class TicketsController extends Controller
         return redirect()->back()->with("status", "The ticket has been closed.");
     }
 
-    public function rejection(Request $request, $id)
+    public function rejection(Request $request, AppMailer $mailer, $id)
     {
         $this->validate($request, [
             'reason' => 'required',
@@ -208,16 +208,14 @@ class TicketsController extends Controller
             'comments'  => $request->input('comments'),
 
         ]);
+
+      $rejection->save();
+      $status= $request->input('reject');
+
+      DB::update('update tickets set status = ? where no = ?', [$status, $id]);
         
-        $rejection->save();
-       // $mailer->sendRejectionInformation(Auth::user(), $rejection);
-        
-        $number = DB::table('revisions')
-        ->orderBy('created_at','desc')
-        ->first();
-      
-       $num = sprintf('%02d', intval($number->id));
-      return redirect()->back()->with("status", "SRN: ADNESEA$id-R$num has been rejected.");
+      $mailer->sendRejectionInformation(Auth::user(), $rejection);
+      return redirect()->back()->with("status", "SRN: ADNESEA$id has been rejected.");
   
     }
 }

@@ -17,6 +17,7 @@
                                 
                        
                        <div class="form-group{{ $errors->has('reason') ? ' has-error' : '' }}">
+                       <input type="hidden" name="reject" value="Rejected">
                             <label for="reason" class="col-md-10 control-label">Please select any one Reason for Reject the Request</label>
 
                             <div class="col-md-10">
