@@ -151,7 +151,7 @@ class AppMailer {
         ->first();      
       
         $num = sprintf('%03d', intval($number->no));
-        $this->to = ['manvi.anand@avita-india.com'];
+        $this->to = ['manvi.anand@avita-india.com', 'info@ashplan.media.com'];
         $this->subject = "[SRN $ticket->job$num] $ticket->title";
         $this->view = 'emails.rejection_info';
         $this->data = compact('user', 'rejection');
