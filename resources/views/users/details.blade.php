@@ -127,7 +127,7 @@
                @endif
        </td>
     </tr>
-          <!--- 
+       
            <tr>
              <td>
                 </td>
@@ -146,14 +146,9 @@
                  </td>
                  
                  </tr>
-              --->
+             
           </table>
  
-     @include('tickets.comments')
-
-     <hr>
-
-     @include('tickets.reply')
            </div>
 
 
