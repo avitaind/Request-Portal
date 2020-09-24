@@ -127,6 +127,7 @@
                @endif
        </td>
     </tr>
+          <!--- 
            <tr>
              <td>
                 </td>
@@ -136,23 +137,23 @@
                 <div class="col-md-8">
 
                  @if($ticket_detail->status=='closed')
-
-              
                     <a class="nav-link btn btn-primary" style="cursor: pointer; color:#fff;" data-toggle="modal" data-target="#revisionModal">{{ __('Request Review') }}</a>
-                
                   @else
-                
                     <a class="nav-link btn btn-primary" style="cursor: pointer; color:#fff;" data-toggle="modal" data-target="#editModal">{{ __('Request Edits') }}</a>
-                
                   @endif
                   </div>
                   </div>
                  </td>
                  
                  </tr>
-              
+              --->
           </table>
-    
+ 
+     @include('tickets.comments')
+
+     <hr>
+
+     @include('tickets.reply')
            </div>
 
 
