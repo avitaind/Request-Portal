@@ -49,22 +49,24 @@ Route::group(['middleware' => ['auth:admin,client'] ], function(){
         Route::get('/revision/detail/{slug}', 'RevisionsController@viewRevisionDetail')->name('revision.detail');
 
 //edits
-        Route::post('/new_edit/{id}', 'EditsController@store');
-        Route::get('view_edit', 'EditsController@view');
-        Route::get('/edit/detail/{slug}', 'EditsController@viewEditDetail')->name('edit.detail');
+    Route::post('/new_edit/{id}', 'EditsController@store');
+    Route::get('view_edit', 'EditsController@view');
+    Route::get('/edit/detail/{slug}', 'EditsController@viewEditDetail')->name('edit.detail');
 
-        Route::get('/ticket/delete/{slug}', 'TicketsController@deleteTicketDetail')->name('ticket.delete');
-       // Route::get('/ticket/detail/{slug}', 'TicketsController@showTicketDetail')->name('ticket.detail');
-       // Route::get('/ticket/status/{slug}', 'TicketsController@viewTicketDetail')->name('ticket.status');
+    Route::get('/ticket/delete/{slug}', 'TicketsController@deleteTicketDetail')->name('ticket.delete');
+    // Route::get('/ticket/detail/{slug}', 'TicketsController@showTicketDetail')->name('ticket.detail');
+    // Route::get('/ticket/status/{slug}', 'TicketsController@viewTicketDetail')->name('ticket.status');
     
 
-        //creative approve
-
+    //creative approve
     Route::post('/approve', 'TicketsController@approve')->name('approve');
     Route::post('/reject', 'TicketsController@reject')->name('reject');
 
-
-    Route::post('comment', 'CommentsController@postComment');
+    //Comments and Reply
+    Route::post('/comment/store', 'CommentController@store')->name('comment.add');
+    Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
+    
+    //Search and Filter
     Route::resource('column-searching', 'ColumnSearchingController');
 
 

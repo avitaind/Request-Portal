@@ -161,7 +161,31 @@
                      </table>
                 </form>
 
-             </div>   
+             </div>  
+
+          <!---
+             <div class="card-body">
+                <h5>Display Comments</h5>
+            
+                @include('partials.replies', ['comments' => $ticket_detail->comments, 'post_id' => $ticket_detail->no])
+
+                <hr />
+               </div>
+
+               <div class="card-body">
+                <h5>Leave a comment</h5>
+                <form method="post" action="{{ route('comment.add') }}">
+                    @csrf
+                    <div class="form-group">
+                        <input type="text" name="comment" class="form-control" />
+                        <input type="hidden" name="post_id" value="{{ $ticket_detail->no }}" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-sm btn-outline-danger py-0" style="font-size: 0.8em;" value="Add Comment" />
+                    </div>
+                </form>
+               </div> 
+               --->
           </div>
 
         </div>

@@ -12,15 +12,15 @@ class Ticket extends Model
     // Ticket.php file
 
     public function category()
-    
     {
         return $this->belongsTo(Category::class);
     }
     
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id');
     }
+
 
     public function status()
     {
