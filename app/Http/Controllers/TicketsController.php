@@ -198,7 +198,6 @@ class TicketsController extends Controller
     {
         $this->validate($request, [
             'reason' => 'required',
-            'comments'  => 'required',
                       
         ]);
 
