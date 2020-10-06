@@ -3,12 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Laravelista\Comments\Commentable;
 
 
 class Ticket extends Model
 {
-    use Commentable;
     
     protected $fillable = [
         'job','no', 'brand', 'country', 'title', 'category_name', 'priority', 'summary', 'objective', 'reference', 'otherinfo', 'comments'

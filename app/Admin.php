@@ -4,11 +4,10 @@
 
     use Illuminate\Notifications\Notifiable;
     use Illuminate\Foundation\Auth\User as Authenticatable;
-    use Laravelista\Comments\Commenter;
 
     class Admin extends Authenticatable
     {
-        use Notifiable, Commenter;
+        use Notifiable;
 
         protected $guard = 'admin';
 
