@@ -24,7 +24,7 @@ class CreateTicketsTable extends Migration
             $table->string('priority');
             $table->text('summary');
             $table->string('objective')->nullable();
-            $table->json('reference')->nullable();
+            $table->string('reference')->nullable();
             $table->string('otherinfo')->nullable();
             $table->string('deadline')->nullable()->default('N/A');
             $table->string('status')->nullable()->default('N/A');
