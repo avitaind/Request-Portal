@@ -150,10 +150,7 @@
                  </table>
 
           </div>
-            <div>
-            @comments(['model' => $ticket_detail])
-
-            </div>
+          
       </div>
     </div>     
   @endsection
