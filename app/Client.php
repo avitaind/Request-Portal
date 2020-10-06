@@ -4,10 +4,11 @@
 
     use Illuminate\Notifications\Notifiable;
     use Illuminate\Foundation\Auth\User as Authenticatable;
+    use Laravelista\Comments\Commenter;
 
     class Client extends Authenticatable
     {
-        use Notifiable;
+        use Notifiable, Commenter;
 
         protected $guard = 'client';
 

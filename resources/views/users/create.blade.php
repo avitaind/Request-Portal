@@ -140,7 +140,7 @@
                         <div class="form-group{{ $errors->has('reference') ? ' has-error' : '' }}">
                             <label for="reference" class="col-md-10 control-label">Reference File Upload</label>
                             <div class="col-md-10">
-                                <input id="reference" type="file" class="form-control" name="reference" value="{{ old('reference') }}">
+                                <input id="reference" multiple="multiple" type="file" class="form-control" name="reference[]" value="{{ old('reference') }}">
                                 <p class="files">Supported file format: jpg, jpeg, png, pdf, xlsx, xlx, ppt, pptx, csv, zip</p>    
                                @if ($errors->has('reference'))
                                     <span class="help-block">

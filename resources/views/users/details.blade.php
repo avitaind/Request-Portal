@@ -78,7 +78,6 @@
 
                <!--- form  --->
 
-
                  <tr>
                  <th scope="col">Deadline:</th>
                 <td>{!! $ticket_detail->deadline !!}</td>
@@ -110,15 +109,16 @@
                        </form>
                 </span>
                 <span class="pull-right">
-                 <form method="POST" role="form" action="{{ route('reject', $ticket_detail->no) }}">
+                
+                <form method="POST" role="form" action="{{ route('reject', $ticket_detail->no) }}">
                  @csrf
                    <input type="hidden" name="id" value="{{ $ticket_detail->no}}">
                   <button type="submit" class="btn btn-danger">Reject</button>
-                 </form>
+                </form>
+               
                </span>
-            </div>
-            
-    
+             </div>
+ 
             </div>
                      
           </div>
@@ -147,12 +147,13 @@
                  
                  </tr>
              
-          </table>
- 
-           </div>
+                 </table>
 
+          </div>
+            <div>
+            @comments(['model' => $ticket_detail])
 
+            </div>
       </div>
-
     </div>     
   @endsection

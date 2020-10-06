@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Ticket;
 use App\Rejection;
-use App\Comment;
 use Faker\Provider\Image;
 use App\Mailers\AppMailer;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
@@ -92,15 +91,21 @@ class TicketsController extends Controller
             'category'  => 'required',
             'priority'  => 'required',
             'summary'   => 'required',
-            'reference' => 'mimes:jpg,jpeg,png,pdf,xlsx,xlx,ppt,pptx,csv,zip',
+            'reference.*' => 'mimes:jpg,jpeg,png,pdf,xlsx,xlx,ppt,pptx,csv,zip',
                       
         ]);
  
-        if($request->hasFile('reference')){
-            $image = $request->file('reference')->getClientOriginalName();
-            $fileName = $request->reference->move(date('mdYHis').'uploads', $image);
+        if($request->hasFile('reference'))
+         {
+            $references = $request->file('reference');
             
-        }
+            foreach($references as $reference)
+            {
+                 $image = $reference->getClientOriginalName();
+                 $fileName = $reference->move(date('mdYHis').'uploads', $image);
+                 
+            }
+         }
   
       $ticket = new Ticket([
              'job'     => 'ADNESEA',
@@ -111,7 +116,7 @@ class TicketsController extends Controller
              'priority'   => $request->input('priority'),
              'summary'   => $request->input('summary'),
              'objective' => $request->input('objective'),
-             'reference' => $fileName,
+             'reference[]' => $fileName,
              'otherinfo' => $request->input('otherinfo'),
          ]);
         

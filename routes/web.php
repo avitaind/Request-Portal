@@ -35,13 +35,13 @@ Route::group(['middleware' => ['auth:admin,client'] ], function(){
 
         Route::resource('show_ticket', 'ShowTicketController');
         Route::resource('view_ticket', 'ViewTicketController');
-       Route::get('/ticket/detail/{slug}', 'TicketsController@showTicketDetail');
-       Route::get('/ticket/status/{slug}', 'TicketsController@viewTicketDetail');
+        Route::get('/ticket/detail/{slug}', 'TicketsController@showTicketDetail');
+        Route::get('/ticket/status/{slug}', 'TicketsController@viewTicketDetail');
 
 
         Route::post('/update/{id}', 'TicketsController@update');
-      //  Route::get('view_ticket', 'TicketsController@view');
-      Route::post('/reject_request/{id}', 'TicketsController@rejection');
+      //Route::get('view_ticket', 'TicketsController@view');
+        Route::post('/reject_request/{id}', 'TicketsController@rejection');
 
 //revisions
         Route::post('/new_revision/{id}', 'RevisionsController@store');

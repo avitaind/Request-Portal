@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravelista\Comments\Commentable;
+
 
 class Ticket extends Model
 {
+    use Commentable;
+    
     protected $fillable = [
         'job','no', 'brand', 'country', 'title', 'category_name', 'priority', 'summary', 'objective', 'reference', 'otherinfo', 'comments'
     ];
@@ -16,12 +20,7 @@ class Ticket extends Model
         return $this->belongsTo(Category::class);
     }
     
-    public function comments()
-    {
-        return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id');
-    }
-
-
+  
     public function status()
     {
         return $this->hasMany(Status::class);
