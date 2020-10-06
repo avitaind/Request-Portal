@@ -116,7 +116,7 @@ class TicketsController extends Controller
              'priority'   => $request->input('priority'),
              'summary'   => $request->input('summary'),
              'objective' => $request->input('objective'),
-             'reference[]' => $fileName,
+             'reference[]' => json_encode($fileName),
              'otherinfo' => $request->input('otherinfo'),
          ]);
         
