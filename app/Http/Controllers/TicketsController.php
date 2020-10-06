@@ -95,17 +95,12 @@ class TicketsController extends Controller
                       
         ]);
  
-        if($request->hasFile('reference'))
-         {
-            $references = $request->file('reference');
+   
+        if($request->hasFile('reference')){
+            $image = $request->file('reference')->getClientOriginalName();
+            $fileName = $request->reference->move(date('mdYHis').'uploads', $image);
             
-            foreach($references as $reference)
-            {
-                 $image = $reference->getClientOriginalName();
-                 $fileName = $reference->move(date('mdYHis').'uploads', $image);
-                 
-            }
-         }
+        }
   
       $ticket = new Ticket([
              'job'     => 'ADNESEA',
@@ -116,7 +111,7 @@ class TicketsController extends Controller
              'priority'   => $request->input('priority'),
              'summary'   => $request->input('summary'),
              'objective' => $request->input('objective'),
-             'reference[]' => json_encode($fileName),
+             'reference' => $fileName,
              'otherinfo' => $request->input('otherinfo'),
          ]);
         
