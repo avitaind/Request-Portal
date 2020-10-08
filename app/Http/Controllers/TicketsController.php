@@ -95,23 +95,40 @@ class TicketsController extends Controller
                       
         ]);
  
-   
-        if($request->hasFile('reference')){
+      /*  if($request->hasFile('reference')){
             $image = $request->file('reference')->getClientOriginalName();
             $fileName = $request->reference->move(date('mdYHis').'uploads', $image);
             
         }
-  
+      */
+      $picture = array();
+
+      if($request->hasFile('reference')) {
+        $imageNameArr = [];
+        foreach ($request->reference as $file) {
+            // you can also use the original name
+            $imageName = time().'-'.$file->getClientOriginalName();
+            $imageNameArr[] = $imageName;
+            // Upload file to public path in images directory
+            $fileName = $file->move(date('mdYHis').'uploads', $imageName);
+            // Database operation
+            $array[] = $fileName; 
+            $picture = implode(",", $array); //Image separated by comma
+        }
+        
+    }
+
+
       $ticket = new Ticket([
              'job'     => 'ADNESEA',
-             'brand'     => $request->input('brand'),
-             'country'     => $request->input('country'),
-             'title'     => $request->input('title'),
+             'brand'   => $request->input('brand'),
+             'country' => $request->input('country'),
+             'title'   => $request->input('title'),
              'category_name' => $request->input('category'),
-             'priority'   => $request->input('priority'),
+             'priority'  => $request->input('priority'),
              'summary'   => $request->input('summary'),
              'objective' => $request->input('objective'),
-             'reference' => $fileName,
+             'reference' => $picture,
              'otherinfo' => $request->input('otherinfo'),
          ]);
         
