@@ -181,6 +181,7 @@
                 </form>
 
              </div>  
+             <!---
              <div>
                <h3>Comments</h3>
                   <form onsubmit="addComment(event);">
@@ -203,6 +204,7 @@
                   </div>
                 </td>
           </div>
+          ---->
 
         </div>
     </div>
