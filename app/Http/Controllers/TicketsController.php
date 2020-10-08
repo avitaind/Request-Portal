@@ -161,7 +161,6 @@ class TicketsController extends Controller
 
     public function showTicketDetail($slug){
 
-
         $statuses = DB::table('statuses')
         ->select("*")
         ->get();

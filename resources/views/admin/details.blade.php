@@ -57,20 +57,19 @@
                              <td>{!! $ticket_detail->objective !!}</td>
                          </tr>
                
-                        <tr>
-                        @if($ticket_detail->reference!='')
-                        
+                       <tr>
                         <th scope="col">Reference:</th>
-                        
-                        <td>                        
-                        <a href="{{ '/'.$ticket_detail->reference}}" target="_blank" download="{!! $ticket_detail->reference !!}">Download File</a>
-                         </td>
-                            @else
-                            <th scope="col">Reference:</th>
+                        @if ($ticket_detail->reference!="")
+                        <td>
+                          @foreach(explode(',', $ticket_detail->reference) as $ref) 
+                          <a href="{{ '/'.$ref}}" target="_blank" download="{!! $ref !!}">Download File</a><br/>
+                          @endforeach
+                          </td>
+                          @else
                             <td>N/A</td>
-
-                            @endif
+                        @endif
                         </tr>
+                       <tr>
                         
                          <tr>
                             <th scope="col">Other Information:</th>
