@@ -141,7 +141,7 @@
                             <label for="reference" class="col-md-10 control-label">Reference File Upload</label>
                             <div class="col-md-10">
                                 <input id="reference" type="file" class="form-control" name="reference[]" multiple="" value="{{ old('reference') }}">
-                                <p class="files">Supported file format: jpg, jpeg, png, pdf, xlsx, xlx, ppt, pptx, csv, zip</p>    
+                                <p class="files">Supported file format: jpg, jpeg, png, pdf, xlsx, xlx, ppt, pptx, csv, zip<br/>Multiple files should have the same extension or in a zip file.</p>    
                                @if ($errors->has('reference'))
                                     <span class="help-block">
                                     <strong><span class="error">{{ $errors->first('reference') }}</span></strong>
