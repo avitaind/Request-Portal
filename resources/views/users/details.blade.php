@@ -130,20 +130,28 @@
        
            <tr>
              <td>
+             <div>
+               <h3>Comments</h3>
+                  <form onsubmit="addComment(event);">
+                     <input type="text" placeholder="Add a comment" name="text" id="text" required>
+                     <input type="hidden" name="jobno" id="jobno" value="{{$ticket_detail->no}}">
+                     <input type="hidden" name="username" id="username" value="{{Auth::guard('client')->user()->name}}">
+                      <button id="addCommentBtn">Comment</button>
+                 </form>
+                   <div class="alert" id="alert" style="display: none;"></div>
+                 <br>
+             <div id="comments">
+                @foreach($comments as $comment)
+                    <div>
+                     <small>{{ $comment->username }}</small>
+                        <br>
+                            {{ $comment->text }}
+                         </div>
+                        @endforeach
+                     </div>
+                  </div>
                 </td>
-                   <td>
-                 <div class="row justify-content-center">
-              
-                <div class="col-md-8">
-
-                 @if($ticket_detail->status=='closed')
-                    <a class="nav-link btn btn-primary" style="cursor: pointer; color:#fff;" data-toggle="modal" data-target="#revisionModal">{{ __('Request Review') }}</a>
-                  @else
-                    <a class="nav-link btn btn-primary" style="cursor: pointer; color:#fff;" data-toggle="modal" data-target="#editModal">{{ __('Request Edits') }}</a>
-                  @endif
-                  </div>
-                  </div>
-                 </td>
+       
                  
                  </tr>
              
@@ -152,5 +160,62 @@
           </div>
           
       </div>
-    </div>     
+    </div>   
+     <!-- Add jQuery -->
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script>
+        function displayComment(data) {
+            let $comment = $('<div>').text(data['text']).prepend($('<small>').html(data['username'] + "<br>"));
+                 $('#comments').prepend($comment);
+        }
+
+        function addComment(event) {
+            function showAlert(message) {
+                let $alert = $('#alert');
+                $alert.text(message).show();
+                setTimeout(() => $alert.hide(), 4000);
+            }
+
+            event.preventDefault();
+            $('#addCommentBtn').attr('disabled', 'disabled');
+            let data = {
+                jobno: $('#jobno').val(),
+                text: $('#text').val(),
+                username: $('#username').val(),
+            };
+            fetch('/comments', {
+                body: JSON.stringify(data),
+                credentials: 'same-origin',
+                headers: {
+                    'content-type': 'application/json',
+                    'x-csrf-token': $('meta[name="csrf-token"]').attr('content'),
+                    'x-socket-id': window.socketId
+                },
+                method: 'POST',
+                mode: 'cors',
+            }).then(response => {
+                $('#addCommentBtn').removeAttr('disabled');
+                if (response.ok) {
+                    displayComment(data);
+                    showAlert('Comment posted!');
+                } else {
+                    showAlert('Your comment was not approved for posting. Please be nicer :)');
+                }
+            })
+        }
+    </script>
+    <script src="https://js.pusher.com/4.2/pusher.min.js"></script>
+    <script>
+        var socket = new Pusher("your-app-key", {
+            cluster: 'your-app-cluster',
+        });
+        // set the socket ID when we connect
+        socket.connection.bind('connected', function() {
+            window.socketId = socket.connection.socket_id;
+        });
+        socket.subscribe('comments')
+            .bind('new-comment',displayComment);
+    </script>  
   @endsection

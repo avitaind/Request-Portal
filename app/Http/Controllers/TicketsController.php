@@ -10,6 +10,7 @@ use Storage;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Comment;
 use App\Ticket;
 use App\Rejection;
 use Faker\Provider\Image;
@@ -153,8 +154,10 @@ class TicketsController extends Controller
         //$ticket = Ticket::where('no', $slug)->firstOrFail();
         //return view('users.details', compact('ticket'));
 
+        $comments = Comment::orderBy('id', 'desc')->get();
+
         $ticket_detail = Ticket::where('no', $slug)->get()->first();
-        return view('users.details', compact('ticket_detail'));
+        return view('users.details', compact('ticket_detail', 'comments'));
     }
 
 
@@ -165,8 +168,10 @@ class TicketsController extends Controller
         ->select("*")
         ->get();
 
+        $comments = Comment::orderBy('id', 'desc')->get();
+
         $ticket_detail = Ticket::where('no', $slug)->get()->first();
-        return view('admin.details', compact('ticket_detail', 'statuses'));
+        return view('admin.details', compact('ticket_detail', 'statuses', 'comments'));
 
         //
       
@@ -232,5 +237,14 @@ class TicketsController extends Controller
       $mailer->sendRejectionInformation(Auth::user(), $rejection);
       return redirect()->back()->with("status", "SRN: ADNESEA$id has been rejected.");
   
+    }
+    
+    public function addComment()
+    {
+        $data = request()->post();
+        Comment::moderate($data['text']);
+        $comment = Comment::create($data);
+        Pusher::trigger('comments', 'new-comment', $comment, request()->header('X-Socket-Id'));
+        return $comment;
     }
 }

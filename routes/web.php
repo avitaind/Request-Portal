@@ -69,5 +69,7 @@ Route::group(['middleware' => ['auth:admin,client'] ], function(){
     //Search and Filter
     Route::resource('column-searching', 'ColumnSearchingController');
 
-
+    //comments
+    
+    Route::post('/comments', 'TicketsController@addComment');
 });
