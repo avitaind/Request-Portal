@@ -84,7 +84,7 @@ class TicketsController extends Controller
 
     public function store(Request $request, AppMailer $mailer){
 
-        $fileName="";
+       
         $this->validate($request, [
             'brand'     => 'required',
             'country'   => 'required',
@@ -102,9 +102,12 @@ class TicketsController extends Controller
             
         }
       */
-      $picture = array();
+
+
+     
 
       if($request->hasFile('reference')) {
+        $picture = array();
         $imageNameArr = [];
         foreach ($request->reference as $file) {
             // you can also use the original name
@@ -118,7 +121,10 @@ class TicketsController extends Controller
         }
         
     }
+        else{
+            $picture = "";
 
+    }
 
       $ticket = new Ticket([
              'job'     => 'ADNESEA',
