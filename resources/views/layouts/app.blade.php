@@ -62,7 +62,7 @@
       }
       
       .links > a {
-        color: rebeccapurple;
+        color: #FFFFFF;
         padding: 15px 40px;
         margin: 21px;
         font-size: 17px;
@@ -71,14 +71,13 @@
         text-decoration: none;
         text-transform: uppercase;
         border-radius:25px;
-        border:2px solid rebeccapurple;  
       }
       
       
       
       .links > a:hover {
-        color: white;
-        background-color:rebeccapurple;
+        color: rebeccapurple;
+        background-color:white;
         padding: 15px 40px;
         margin: 21px;
         font-size: 17px;
