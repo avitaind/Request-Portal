@@ -83,7 +83,6 @@ class TicketsController extends Controller
 
 
     public function store(Request $request, AppMailer $mailer){
-
        
         $this->validate($request, [
             'brand'     => 'required',
@@ -103,8 +102,6 @@ class TicketsController extends Controller
         }
       */
 
-
-     
 
       if($request->hasFile('reference')) {
         $picture = array();
