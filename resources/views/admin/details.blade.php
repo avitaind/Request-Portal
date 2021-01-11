@@ -134,6 +134,8 @@
                                </div>
                             </td>
                          </tr>
+
+                         
                          @if($ticket_detail->creative_status!='')
                          <tr>
                             <th scope="col">Creative Status:</th>

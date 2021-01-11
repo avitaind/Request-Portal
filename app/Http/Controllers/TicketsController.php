@@ -135,22 +135,49 @@ class TicketsController extends Controller
              'reference' => $picture,
              'otherinfo' => $request->input('otherinfo'),
          ]);
+
+
+         $high = Ticket::where('priority','high')->count();
+         $medium = Ticket::where('priority','medium')->count();
+         $low = Ticket::where('priority','low')->count();
+
         
            
       //    $fileName = $request->file('reference')->getClientOriginalName();
        //  $request->reference->move(public_path().'/uploads', $fileName);
-       
-        $ticket->save();         
-        $mailer->sendTicketInformation(Auth::user(), $ticket);
 
-        $number = DB::table('tickets')
-        ->orderBy('created_at','desc')
-        ->first();
-      
-       $num = sprintf('%03d', intval($number->no));
-       return redirect()->back()->with("status", "A new SRN: $ticket->job$num has been generated.");
-    }
-    
+       if( $request->input('priority') == 'high' &&  $high>5)
+            {
+                return redirect()->back()->with("alert", "You have exceeded the maximum High priority tickets i.e. 5");
+            }
+
+         elseif($request->input('priority') == 'medium' && $medium>8)
+                {  
+                    return redirect()->back()->with("alert", "You have exceeded the maximum Medium priority i.e. 8");
+                }
+
+         elseif($request->input('priority') == 'medium' && $medium>10)
+                {  
+                    return redirect()->back()->with("alert", "You have exceeded the maximum Low priority i.e. 10");
+                }
+          else{      
+
+                            $ticket->save();         
+                            $mailer->sendTicketInformation(Auth::user(), $ticket);
+
+                        
+                            $number = DB::table('tickets')
+                            ->orderBy('created_at','desc')
+                            ->first();
+                        
+                             $num = sprintf('%03d', intval($number->no));
+                             return redirect()->back()->with("status", "A new SRN: $ticket->job$num has been generated.");
+
+  
+                        }
+                        
+
+            }
 
     public function viewTicketDetail($slug){
 

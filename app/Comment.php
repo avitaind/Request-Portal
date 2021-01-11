@@ -1,23 +1,26 @@
 <?php
 
-    namespace App;
+namespace App;
 
-    use Illuminate\Database\Eloquent\Model;
-    use Zttp\Zttp;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-    class Comment extends Model
+class Comment extends Model
+{
+    protected $fillable = [
+        'body', 'user_name', 'job_no'
+    ];
+    
+    public function post()
     {
-        protected $guarded = ['admin','client'];
-
-        public static function moderate($comment)
-        {
-            $response = Zttp::withoutVerifying()->post("https://commentator.now.sh", [
-                'jobno' => $jobno,
-                'comment' => $comment,
-                'limit' => -3,
-            ])->json();
-            if ($response['commentate']) {
-                abort(400, "Comment not allowed");
-            }
-        }
+        return $this->belongsTo('App\Ticket');
     }
+  
+    public function user()
+    {
+        return $this->belongsTo('App\Admin');
+        return $this->belongsTo('App\Client');
+
+    }
+}
