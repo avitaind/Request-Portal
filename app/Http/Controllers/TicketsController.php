@@ -160,7 +160,7 @@ class TicketsController extends Controller
                 {  
                     return redirect()->back()->with("alert", "You have exceeded the maximum Low priority i.e. 10");
                 }
-          else{      
+            else{      
 
                             $ticket->save();         
                             $mailer->sendTicketInformation(Auth::user(), $ticket);

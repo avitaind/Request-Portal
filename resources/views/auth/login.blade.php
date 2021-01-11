@@ -34,14 +34,26 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password"  id="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" >
+                                <input type="checkbox" onclick="myFunction()"> Show Password
 
+                                <script>
+                                function myFunction() {
+                                var x = document.getElementById("password");
+                                if (x.type === "password") {
+                                    x.type = "text";
+                                 } else {
+                                     x.type = "password";
+                                  }
+                                }
+                                </script>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
+                            
                         </div>
 
                         <div class="form-group row">
@@ -74,5 +86,6 @@
             </div>
         </div>
     </div>
+
 </div>
 @endsection

@@ -10,6 +10,9 @@
 
     <title>{{ config('app.name', 'ASHPLAN') }}</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
