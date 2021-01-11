@@ -156,7 +156,7 @@ class TicketsController extends Controller
                     return redirect()->back()->with("alert", "You have exceeded the maximum Medium priority i.e. 8");
                 }
 
-         elseif($request->input('priority') == 'medium' && $medium>10)
+         elseif($request->input('priority') == 'low' && $low>10)
                 {  
                     return redirect()->back()->with("alert", "You have exceeded the maximum Low priority i.e. 10");
                 }
