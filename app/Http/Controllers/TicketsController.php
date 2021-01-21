@@ -137,16 +137,18 @@ class TicketsController extends Controller
          ]);
 
 
-         $high = Ticket::where('priority','high')->count();
-         $medium = Ticket::where('priority','medium')->count();
-         $low = Ticket::where('priority','low')->count();
-
-        
+         $high = Ticket::where('priority','high')
+                         ->where('status','Processing')->count();
+         $medium = Ticket::where('priority','medium')
+                         ->where('status','Processing')->count();
+         $low = Ticket::where('priority','low')
+                         ->where('status', 'Processing')->count();
+                            
            
       //    $fileName = $request->file('reference')->getClientOriginalName();
        //  $request->reference->move(public_path().'/uploads', $fileName);
 
-       if( $request->input('priority') == 'high' &&  $high>5)
+    if( $request->input('priority') == 'high' &&  $high>5)
             {
                 return redirect()->back()->with("alert", "You have exceeded the maximum High priority tickets i.e. 5");
             }
@@ -175,6 +177,7 @@ class TicketsController extends Controller
 
   
                         }
+                       
                         
 
             }
