@@ -89,7 +89,7 @@ class AppMailer {
       
       
         $num = sprintf('%03d', intval($number->no));
-        $this->to = ['contact@ashplan.media','manvi.anand@avita-india.com'];
+        $this->to = ['contact@ashplan.media'];
         $this->subject = "[SRN $ticket->job$num] $ticket->title";
         $this->view = 'emails.status_info';
         $this->data = compact('user', 'ticket');
@@ -151,7 +151,7 @@ class AppMailer {
         ->first();      
       
         $num = sprintf('%03d', intval($number->no));
-        $this->to = ['manvi.anand@avita-india.com', 'info@ashplan.media'];
+        $this->to = ['info@ashplan.media'];
         $this->subject = "[SRN $ticket->job$num] $ticket->title";
         $this->view = 'emails.rejection_info';
         $this->data = compact('user', 'rejection');
