@@ -155,13 +155,36 @@
                  
                  </tr>
              --->
+
+             <tr>
+             <td></td>
+             <td>
+             <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editModal">
+                  Edit Request
+                 </button>
+             </td>
+             </tr>
                  </table>
+
+
 
           </div>
           
       </div>
     </div>   
      <!-- Add jQuery -->
+     <script>
+// when DOM is ready
+        $(document).ready(function () {
+
+        // Attach Button click event listener 
+        $("#editBtn").click(function(){
+
+            // show Modal
+            $('#editModal').modal('show');
+            });
+        });
+</script>
      <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
