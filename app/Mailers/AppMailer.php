@@ -37,7 +37,7 @@ class AppMailer {
         $num = sprintf('%03d', intval($number->no));
 
 
-        $this->to = ['aman.sharma@ashplan.media','info@ashplan.media','nitesh@ashplan.media','sandeep.rawat@ashplan.media'];
+        $this->to = ['aman.sharma@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','sandeep.rawat@ashplan.media'];
         $this->subject = "[SRN $ticket->job$num] $ticket->title";
         $this->view = 'emails.ticket_info';
         $this->data = compact('user', 'ticket');
@@ -109,7 +109,7 @@ class AppMailer {
       
        $num = sprintf('%02d', intval($number->id));
 
-       $this->to = ['aman.sharma@ashplan.media','info@ashplan.media','nitesh@ashplan.media','sandeep.rawat@ashplan.media'];
+       $this->to = ['aman.sharma@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','sandeep.rawat@ashplan.media'];
        $this->subject = "[REVISION ADNESEA$number->jobno-R$num] $revision->title";
        $this->view = 'emails.revision_info';
        $this->data = compact('user', 'revision');
@@ -128,7 +128,7 @@ class AppMailer {
       
        $num = sprintf('%02d', intval($number->id));
 
-       $this->to = ['aman.sharma@ashplan.media','info@ashplan.media','nitesh@ashplan.media','sandeep.rawat@ashplan.media'];
+       $this->to = ['aman.sharma@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','sandeep.rawat@ashplan.media'];
        $this->subject = "[EDIT ADNESEA$number->jobno-E$num] $edit->title";
        $this->view = 'emails.edit_info';
         $this->data = compact('user', 'edit');
