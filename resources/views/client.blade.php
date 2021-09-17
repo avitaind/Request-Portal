@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
 
+
     <div class="row justify-content-center">
         <div class="title m-b-md">
                     <img src="{{ asset('images/logo.png') }}" style="width:350px;">
@@ -16,7 +17,7 @@
                 </div>
             </div>
         </div>
-
+   
 </div>
 
 @endsection

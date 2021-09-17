@@ -20,14 +20,13 @@
                             <div class="col-md-10">
                                  <select id="brand" type="brand" class="form-control" name="brand">
 
-                               <option value="">--- Select --- </option>
-                               <option value="avita">AVITA</option>
-                               <option value="nexstgo">NEXSTGO</option>
-                               <option value="vaio">VAIO</option>
+                                 <option value="">--- Select ---</option>
+                                    @foreach ($brands as $brand)
+                               <option value="{{ $brand->name }}">{{ $brand->name }}</option>
+                                    @endforeach
 
                                 </select>
-
-
+                  
                                 @if ($errors->has('brand'))
                                     <span class="help-block">
                                     <strong><span class="error">Brand Name Can Not Be Empty</span></strong>
@@ -42,12 +41,11 @@
                             <div class="col-md-10">
                                <select id="country" type="country" class="form-control" name="country">
 
-                               <option value="">--- Select --- </option>
-                               <option value="india">INDIA</option>
-                               <option value="bangladesh">BANGLADESH</option>
-                               <option value="mauritius">MAURITIUS</option>
-                               <option value="srilanka">SRI LANKA</option>
-                               <option value="nepal">NEPAL</option>
+                         
+                               <option value="">--- Select ---</option>
+                                    @foreach ($countries as $country)
+                               <option value="{{ $country->name }}">{{ $country->name }}</option>
+                                    @endforeach
 
                                 </select>
                                 @if ($errors->has('country'))

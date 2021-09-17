@@ -10,6 +10,8 @@ use Storage;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Brand;
+use App\Country;
 use App\Comment;
 use App\Ticket;
 use App\Rejection;
@@ -25,8 +27,11 @@ class TicketsController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
-        return view('users.create', compact('categories'));
+        $user_id = Auth::guard('client')->user()->id ;
+        $categories = Category::where('user_id', $user_id)->get();
+        $brands = Brand::where('user_id', $user_id)->get();
+        $countries = Country::where('user_id', $user_id)->get();
+        return view('users.create', compact('brands','countries','categories'));
     }
 
 

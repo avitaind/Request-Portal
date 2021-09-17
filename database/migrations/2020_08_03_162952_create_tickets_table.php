@@ -17,6 +17,8 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->string('job');
             $table->bigIncrements('no')->unique();
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('clients');
             $table->string('brand');
             $table->string('country');
             $table->string('title');

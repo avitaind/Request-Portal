@@ -29,4 +29,9 @@
         {
             return $this->hasMany(Ticket::class);
         }
+
+        public function category()
+        {
+            return $this->hasMany('App\Category');
+        }
     }

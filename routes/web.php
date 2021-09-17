@@ -22,10 +22,11 @@ Route::view('/client', 'client');
 Route::get('logout', 'Auth\LoginController@logout');
 
 
-//Tickets Route
+//Tickets Route 
 
 Route::group(['middleware' => ['auth:admin,client'] ], function(){
 
+// AVITA START
         Route::get('new_ticket','TicketsController@create');
         Route::post('new_ticket', 'TicketsController@store');
         
@@ -72,4 +73,7 @@ Route::group(['middleware' => ['auth:admin,client'] ], function(){
     //comments
     
     Route::post('/comments', 'TicketsController@addComment');
+
+//AVITA Ends
+
 });
