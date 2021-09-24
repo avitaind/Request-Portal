@@ -140,6 +140,8 @@ class TicketsController extends Controller
              'reference' => $picture,
              'otherinfo' => $request->input('otherinfo'),
          ]);
+        
+         $pending = Ticket::where('status', 'Pending from Client')->count();
 
 
          $high = Ticket::where('priority','high')
@@ -153,7 +155,10 @@ class TicketsController extends Controller
       //    $fileName = $request->file('reference')->getClientOriginalName();
        //  $request->reference->move(public_path().'/uploads', $fileName);
 
-    if( $request->input('priority') == 'high' &&  $high>5)
+if($pending<5)
+    {
+    
+      if( $request->input('priority') == 'high' &&  $high>5)
             {
                 return redirect()->back()->with("alert", "You have exceeded the maximum High priority tickets i.e. 5");
             }
@@ -183,9 +188,16 @@ class TicketsController extends Controller
   
                         }
                        
+                   }
+                       else{
+                   return redirect()->back()->with("warning", "Please clear all the remaining tickets i.e. Pending from client in order to generate new tickets.");
+
+                }             
+                       
                         
 
             }
+
 
     public function viewTicketDetail($slug){
 
