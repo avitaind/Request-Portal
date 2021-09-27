@@ -155,7 +155,7 @@ class TicketsController extends Controller
       //    $fileName = $request->file('reference')->getClientOriginalName();
        //  $request->reference->move(public_path().'/uploads', $fileName);
 
-if($pending<5)
+if($pending<6)
     {
     
       if( $request->input('priority') == 'high' &&  $high>5)
