@@ -38,7 +38,7 @@ class AppMailer {
         //   );
 
          $mail_1 = array('bhavdeep.bharadwaj@ashplan.media','sandeep.rawat@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media');
-         $mail_2 = array('sandeep.rawat@ashplan.media','aman@meliaura.com','sandeep.rawat@ashplan.media','agam@meliaura.com');
+         $mail_2 = array('sandeep.rawat@ashplan.media','aman@meliaura.com','sandeep.rawat@ashplan.media','agam@meliaura.com','bhavdeep.bharadwaj@ashplan.media');
          $mail=[];
 
          if(Auth::guard('client')->user()->id == '1')
@@ -132,7 +132,7 @@ class AppMailer {
         //   );
 
         $mail_1 = array('bhavdeep.bharadwaj@ashplan.media','sandeep.rawat@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media');
-        $mail_2 = array('sandeep.rawat@ashplan.media','aman@meliaura.com','sandeep.rawat@ashplan.media','agam@meliaura.com');
+        $mail_2 = array('sandeep.rawat@ashplan.media','aman@meliaura.com','sandeep.rawat@ashplan.media','agam@meliaura.com','bhavdeep.bharadwaj@ashplan.media');
          $mail=[];
 
          if(Auth::guard('client')->user()->id == '1')
@@ -172,7 +172,7 @@ class AppMailer {
         //   );
 
         $mail_1 = array('bhavdeep.bharadwaj@ashplan.media','sandeep.rawat@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media');
-        $mail_2 = array('sandeep.rawat@ashplan.media','aman@meliaura.com','sandeep.rawat@ashplan.media','agam@meliaura.com');
+        $mail_2 = array('sandeep.rawat@ashplan.media','aman@meliaura.com','sandeep.rawat@ashplan.media','agam@meliaura.com','bhavdeep.bharadwaj@ashplan.media');
          $mail=[];
 
          if(Auth::guard('client')->user()->id == '1')

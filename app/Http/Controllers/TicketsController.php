@@ -161,20 +161,20 @@ class TicketsController extends Controller
       //    $fileName = $request->file('reference')->getClientOriginalName();
        //  $request->reference->move(public_path().'/uploads', $fileName);
 
-if($pending<1000)
+if($pending<5)
     {
 
-      if( $request->input('priority') == 'high' &&  $high>500)
+      if( $request->input('priority') == 'high' &&  $high>5)
             {
                 return redirect()->back()->with("alert", "You have exceeded the maximum High priority tickets i.e. 5");
             }
 
-         elseif($request->input('priority') == 'medium' && $medium>800)
+         elseif($request->input('priority') == 'medium' && $medium>8)
                 {
                     return redirect()->back()->with("alert", "You have exceeded the maximum Medium priority i.e. 8");
                 }
 
-         elseif($request->input('priority') == 'low' && $low>1000)
+         elseif($request->input('priority') == 'low' && $low>10)
                 {
                     return redirect()->back()->with("alert", "You have exceeded the maximum Low priority i.e. 10");
                 }
