@@ -19,7 +19,7 @@
                     <th scope="col">Priority</th>
                     <th scope="col">Deadline</th>
                     <th scope="col">Status</th>
-         
+
 
                     </tr>
                 </thead>
@@ -35,11 +35,11 @@
                     <td>{{ $ticket->deadline }}</td>
                     <td>{{ $ticket->status }}</td>
                     <td>
-                    
+
                     <div class="col-md-10 col-md-offset-4">
                           <a href="{{ route('ticket.status', $ticket->no) }}" class="btn btn-primary">View</a>
                   </div>
-                    
+
                     </td>
                    </tr>
                     @endforeach
@@ -48,13 +48,13 @@
             </thead>
          </table>
 
-    </div> 
+    </div>
         <div>
 
             <a href="{{ url('new_ticket') }}" class="button btn btn-primary">Create New Ticket</a>
 
         </div>
-  </div> 
+  </div>
 
- </div> 
+ </div>
  @endsection

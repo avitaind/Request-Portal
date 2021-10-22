@@ -14,6 +14,15 @@
 
                         {!! csrf_field() !!}
 
+                        <div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }}" style="display:none!important;">
+                            <label for="user_id" class="col-md-10 control-label">User ID</label>
+
+                            <div class="col-md-10">
+                                <input id="user_id" type="text" class="form-control" name="user_id" value="{!! Auth::user()->id !!}">
+                            </div>
+
+                        </div>
+
                          <div class="form-group{{ $errors->has('brand') ? ' has-error' : '' }}">
                             <label for="brand" class="col-md-10 control-label">Brand</label>
 
@@ -26,7 +35,7 @@
                                     @endforeach
 
                                 </select>
-                  
+
                                 @if ($errors->has('brand'))
                                     <span class="help-block">
                                     <strong><span class="error">Brand Name Can Not Be Empty</span></strong>
@@ -41,7 +50,7 @@
                             <div class="col-md-10">
                                <select id="country" type="country" class="form-control" name="country">
 
-                         
+
                                <option value="">--- Select ---</option>
                                     @foreach ($countries as $country)
                                <option value="{{ $country->name }}">{{ $country->name }}</option>
@@ -87,7 +96,7 @@
                                 @endif
                             </div>
                         </div>
-           
+
 
                         <div class="form-group{{ $errors->has('summary') ? ' has-error' : '' }}">
                             <label for="summary" class="col-md-10 control-label">Summary / Creative Brief</label>
@@ -139,16 +148,16 @@
                             <label for="reference" class="col-md-10 control-label">Reference File Upload</label>
                             <div class="col-md-10">
                                 <input id="reference" type="file" class="form-control" name="reference[]" multiple="" value="{{ old('reference') }}">
-                                <p class="files">Supported file format: doc, docx, jpg, jpeg, png, pdf, xlsx, xlx, ppt, pptx, csv, zip<br/>Multiple files should have the same extension or in a zip file.</p>    
+                                <p class="files">Supported file format: doc, docx, jpg, jpeg, png, pdf, xlsx, xlx, ppt, pptx, csv, zip<br/>Multiple files should have the same extension or in a zip file.</p>
                                @if ($errors->has('reference'))
                                     <span class="help-block">
                                     <strong><span class="error">{{ $errors->first('reference') }}</span></strong>
                                     </span>
                                 @endif
-                                
+
                             </div>
                         </div>
-                        
+
                        <div class="form-group{{ $errors->has('otherinfo') ? ' has-error' : '' }}">
                             <label for="otherinfo" class="col-md-10 control-label">Other Important Information</label>
                             <div class="col-md-10">

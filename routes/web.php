@@ -1,4 +1,8 @@
 <?php
+
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,16 +26,16 @@ Route::view('/client', 'client');
 Route::get('logout', 'Auth\LoginController@logout');
 
 
-//Tickets Route 
+//Tickets Route
 
 Route::group(['middleware' => ['auth:admin,client'] ], function(){
 
 // AVITA START
         Route::get('new_ticket','TicketsController@create');
         Route::post('new_ticket', 'TicketsController@store');
-        
 
-        Route::get('update_ticket', 'TicketsController@update'); 
+
+        Route::get('update_ticket', 'TicketsController@update');
        //Route::get('show_ticket', 'TicketsController@show');
 
         Route::resource('show_ticket', 'ShowTicketController');
@@ -57,7 +61,7 @@ Route::group(['middleware' => ['auth:admin,client'] ], function(){
         Route::get('/ticket/delete/{slug}', 'TicketsController@deleteTicketDetail')->name('ticket.delete');
         // Route::get('/ticket/detail/{slug}', 'TicketsController@showTicketDetail')->name('ticket.detail');
         // Route::get('/ticket/status/{slug}', 'TicketsController@viewTicketDetail')->name('ticket.status');
-    
+
 
     //creative approve
     Route::post('/approve', 'TicketsController@approve')->name('approve');
@@ -66,12 +70,12 @@ Route::group(['middleware' => ['auth:admin,client'] ], function(){
     //Comments and Reply
     Route::post('/comment/store', 'CommentController@store')->name('comment.add');
     Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
-    
+
     //Search and Filter
     Route::resource('column-searching', 'ColumnSearchingController');
 
     //comments
-    
+
     Route::post('/comments', 'TicketsController@addComment');
 
 //AVITA Ends

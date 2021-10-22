@@ -8,16 +8,18 @@ use App\Rejection;
 use Illuminate\Contracts\Mail\Mailer;
 use App\Client;
 use App\Admin;
-use DB;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class AppMailer {
-    protected $mailer; 
-    protected $fromAddress = 'contact@avita-india.com';
-    protected $fromName = 'Service Request | NEXSTGO South East Asia';
+    protected $mailer;
+    protected $fromAddress = 'info@ashplan.media';
+    protected $fromName = 'Service Request | ASHPLAN ';
     protected $to;
     protected $subject;
     protected $view;
     protected $data = [];
+
 
     public function __construct(Mailer $mailer)
     {
@@ -30,14 +32,35 @@ class AppMailer {
     {
         //$this->to = $user->email;
 
+        // $mail = array(
+        //     "mail_1" => 'bhavdeep.bharadwaj@ashplan.media',
+        //     "mail_2" => 'sandeep.rawat@ashplan.media'
+        //   );
+
+         $mail_1 = array('bhavdeep.bharadwaj@ashplan.media','sandeep.rawat@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media');
+         $mail_2 = array('sandeep.rawat@ashplan.media','aman@meliaura.com','sandeep.rawat@ashplan.media','agam@meliaura.com');
+         $mail=[];
+
+         if(Auth::guard('client')->user()->id == '1')
+         {
+             $mail = $mail_1;
+         }
+         elseif(Auth::guard('client')->user()->id == '2')
+         {
+             $mail = $mail_2;
+         }
+         else{
+
+         }
+
         $number = DB::table('tickets')
         ->orderBy('created_at','desc')
         ->first();
-      
+
         $num = sprintf('%03d', intval($number->no));
 
 
-        $this->to = ['aman.sharma@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','sandeep.rawat@ashplan.media','saikat.bhukta@ashplan.media','abhilasha.prabha@nexstgo.com'];
+        $this->to = $mail;
         $this->subject = "[SRN $ticket->job$num] $ticket->title";
         $this->view = 'emails.ticket_info';
         $this->data = compact('user', 'ticket');
@@ -50,7 +73,7 @@ class AppMailer {
         $number = DB::table('tickets')
         ->orderBy('created_at','desc')
         ->first();
-      
+
         $num = sprintf('%03d', intval($ticket->no));
 
         $this->to = ['sandeep.rawat@ashplan.media'];
@@ -65,7 +88,7 @@ class AppMailer {
         $number = DB::table('tickets')
         ->orderBy('created_at','desc')
         ->first();
-      
+
         $num = sprintf('%03d', intval($ticket->no));
 
 
@@ -73,7 +96,7 @@ class AppMailer {
         $this->subject = "RE: $ticket->title (Ticket ID: $ticket->job$num)";
         $this->view = 'emails.ticket_status';
         $this->data = compact('ticketOwner', 'ticket');
- 
+
         return $this->deliver();
     }
 
@@ -86,8 +109,8 @@ class AppMailer {
         $number = DB::table('tickets')
         ->orderBy('created_at','desc')
         ->first();
-      
-      
+
+
         $num = sprintf('%03d', intval($number->no));
         $this->to = ['contact@ashplan.media'];
         $this->subject = "[SRN $ticket->job$num] $ticket->title";
@@ -95,7 +118,7 @@ class AppMailer {
         $this->data = compact('user', 'ticket');
 
         return $this->deliver();
-    
+
         }
 
 
@@ -103,13 +126,34 @@ class AppMailer {
 
     public function sendRevisionInformation($user, Revision $revision)
     {
+        // $mail = array(
+        //     "mail_1" => 'bhavdeep.bharadwaj@ashplan.media',
+        //     "mail_2" => 'sandeep.rawat@ashplan.media'
+        //   );
+
+        $mail_1 = array('bhavdeep.bharadwaj@ashplan.media','sandeep.rawat@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media');
+        $mail_2 = array('sandeep.rawat@ashplan.media','aman@meliaura.com','sandeep.rawat@ashplan.media','agam@meliaura.com');
+         $mail=[];
+
+         if(Auth::guard('client')->user()->id == '1')
+         {
+             $mail = $mail_1;
+         }
+         elseif(Auth::guard('client')->user()->id == '2')
+         {
+             $mail = $mail_2;
+         }
+         else{
+
+         }
+
         $number = DB::table('revisions')
         ->orderBy('created_at','desc')
         ->first();
-      
+
        $num = sprintf('%02d', intval($number->id));
 
-       $this->to = ['aman.sharma@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','sandeep.rawat@ashplan.media','saikat.bhukta@ashplan.media','abhilasha.prabha@nexstgo.com'];
+       $this->to = $mail;
        $this->subject = "[REVISION ADNESEA$number->jobno-R$num] $revision->title";
        $this->view = 'emails.revision_info';
        $this->data = compact('user', 'revision');
@@ -122,13 +166,34 @@ class AppMailer {
 
     public function sendEditInformation($user, Edit $edit)
     {
+        // $mail = array(
+        //     "mail_1" => 'bhavdeep.bharadwaj@ashplan.media',
+        //     "mail_2" => 'sandeep.rawat@ashplan.media'
+        //   );
+
+        $mail_1 = array('bhavdeep.bharadwaj@ashplan.media','sandeep.rawat@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media');
+        $mail_2 = array('sandeep.rawat@ashplan.media','aman@meliaura.com','sandeep.rawat@ashplan.media','agam@meliaura.com');
+         $mail=[];
+
+         if(Auth::guard('client')->user()->id == '1')
+         {
+             $mail = $mail_1;
+         }
+         elseif(Auth::guard('client')->user()->id == '2')
+         {
+             $mail = $mail_2;
+         }
+         else{
+
+         }
+
         $number = DB::table('edits')
         ->orderBy('created_at','desc')
         ->first();
-      
+
        $num = sprintf('%02d', intval($number->id));
 
-       $this->to = ['aman.sharma@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','sandeep.rawat@ashplan.media','saikat.bhukta@ashplan.media','abhilasha.prabha@nexstgo.com'];
+       $this->to = $mail;
        $this->subject = "[EDIT ADNESEA$number->jobno-E$num] $edit->title";
        $this->view = 'emails.edit_info';
         $this->data = compact('user', 'edit');
@@ -148,14 +213,14 @@ class AppMailer {
         $ticket = Ticket::first();
         $number = DB::table('tickets')
         ->orderBy('created_at','desc')
-        ->first();      
-      
+        ->first();
+
         $num = sprintf('%03d', intval($number->no));
         $this->to = ['info@ashplan.media'];
         $this->subject = "[SRN $ticket->job$num] $ticket->title";
         $this->view = 'emails.rejection_info';
         $this->data = compact('user', 'rejection');
- 
+
          return $this->deliver();
 
     }

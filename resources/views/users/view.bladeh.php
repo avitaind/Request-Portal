@@ -72,7 +72,7 @@ $(document).ready(function(){
    processing: true,
    serverSide: true,
    ajax: {
-    url:"{{ route('show_ticket.index') }}",
+    url:"{{ route('view_ticket.index') }}",
     data: {
             status:status,
          }
@@ -94,17 +94,13 @@ $(document).ready(function(){
      data: 'title',
      name: 'title',
      fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-            $(nTd).html("<a href='/ticket/detail/"+oData.no+"'>"+oData.title+"</a>");
+            $(nTd).html("<a href='/ticket/status/"+oData.no+"'>"+oData.title+"</a>");
            }
        },
-    {{--  {
+    {
      data: 'name',
      name: 'name',
-    },  --}}
-    {
-        data: 'category_name',
-        name: 'category_name',
-       },
+    },
     {
      data: 'priority',
      name: 'priority',

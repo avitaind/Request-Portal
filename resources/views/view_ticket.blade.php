@@ -3,10 +3,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AVITA INDIA | Request Portal</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> 
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>  
-   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" /> 
+  <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <style>
@@ -27,7 +27,7 @@ div.dataTables_wrapper div.dataTables_filter{
                </div>
         </nav>
 
-  <div class="container">    
+  <div class="container">
      <br />
      <br />
    <div class="table-responsive">
@@ -48,7 +48,7 @@ div.dataTables_wrapper div.dataTables_filter{
              @endforeach
         </select>
        </th>
-     
+
     </tr>
      </thead>
     </table>
@@ -68,13 +68,13 @@ $(document).ready(function(){
  function fetch_data(status = '' )
  {
   $('#ticket_table').DataTable({
-    "order": [[ 1, "desc" ]], //or asc 
+    "order": [[ 1, "desc" ]], //or asc
    processing: true,
    serverSide: true,
    ajax: {
     url:"{{ route('view_ticket.index') }}",
     data: {
-            status:status,           
+            status:status,
          }
    },
    columns:[
@@ -94,12 +94,16 @@ $(document).ready(function(){
      data: 'title',
      name: 'title',
      fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-            $(nTd).html("<a href='/ticket/status/"+oData.no+"'>"+oData.title+"</a>");  
+            $(nTd).html("<a href='/ticket/status/"+oData.no+"'>"+oData.title+"</a>");
            }
        },
+    {{--  {
+    data: 'name',
+    name: 'name',
+    },  --}}
     {
-     data: 'name',
-     name: 'name',
+     data: 'category_name',
+     name: 'category_name',
     },
     {
      data: 'priority',
@@ -110,7 +114,7 @@ $(document).ready(function(){
      name:'status',
      orderable: false
     },
- 
+
    ]
   });
  }
