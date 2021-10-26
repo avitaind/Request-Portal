@@ -36,6 +36,7 @@ div.dataTables_wrapper div.dataTables_filter{
       <tr>
        <th>Date</th>
        <th>SRN</th>
+       <th>SRN MI</th>
        <th>Brand</th>
        <th>Project Title</th>
        <th>Category</th>
@@ -86,10 +87,10 @@ $(document).ready(function(){
         data: 'job_no',
         name: 'job_no',
        },
-    {{--  {
+    {
      data: 'no',
      name: 'no',
-    },  --}}
+    },
     {
      data: 'brand',
      name: 'brand',
