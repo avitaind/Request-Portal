@@ -9,7 +9,7 @@ class Ticket extends Model
 {
 
     protected $fillable = [
-        'job','no','user_id', 'brand', 'country', 'title', 'category_name', 'priority', 'summary', 'objective', 'reference', 'otherinfo', 'comments'
+        'job','no','user_id','job_no', 'brand', 'country', 'title', 'category_name', 'priority', 'summary', 'objective', 'reference', 'otherinfo', 'comments'
     ];
 
     // Ticket.php file

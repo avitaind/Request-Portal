@@ -133,9 +133,34 @@ class TicketsController extends Controller
 
     }
 
+    if($request->user_id == 2)
+    {
+        // dd($request->user_id);
+        // $getdata = Ticket::where('tickets.user_id','=','$request->user_id')->get();
+        $getdata = Ticket::where('user_id',$request->user_id)->latest('job_no')->first();
+        $job_no = $getdata->job_no;
+        $job_no = $job_no+1;
+        //dd($job_no);
+        $ticket = new Ticket([
+            'job'              => 'MELIAURA',
+            'user_id'          => $request->input('user_id'),
+            'job_no'           => $job_no,
+            'brand'            => $request->input('brand'),
+            'country'          => $request->input('country'),
+            'title'            => $request->input('title'),
+            'category_name'    => $request->input('category'),
+            'priority'         => $request->input('priority'),
+            'summary'          => $request->input('summary'),
+            'objective'        => $request->input('objective'),
+            'reference'        => $picture,
+            'otherinfo'        => $request->input('otherinfo'),
+        ]);
+    }
+    else{
       $ticket = new Ticket([
              'job'              => 'ADNESEA',
              'user_id'          => $request->input('user_id'),
+            'job_no'            => 0,
              'brand'            => $request->input('brand'),
              'country'          => $request->input('country'),
              'title'            => $request->input('title'),
@@ -146,7 +171,7 @@ class TicketsController extends Controller
              'reference'        => $picture,
              'otherinfo'        => $request->input('otherinfo'),
          ]);
-
+        }
          $pending = Ticket::where('status', 'Pending from Client')->count();
 
 
@@ -191,8 +216,12 @@ if($pending<5)
                             ->first();
 
                              $num = sprintf('%03d', intval($number->no));
+                             $num1 = sprintf('%03d',intval($number->job_no));
+                             if($number->user_id==2){
+                             return redirect()->back()->with("status", "A new SRN: $ticket->job$num1 has been generated.");
+                             }else{
                              return redirect()->back()->with("status", "A new SRN: $ticket->job$num has been generated.");
-
+                             }
 
                         }
 

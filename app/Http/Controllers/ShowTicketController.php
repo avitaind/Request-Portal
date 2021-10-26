@@ -9,18 +9,19 @@ class ShowTicketController extends Controller
     //
    function index(Request $request)
     {
+    $user_id = 2;
      if(request()->ajax())
      {
       if($request->status)
       {
-       $data = DB::table('tickets')
-         ->join('categories', 'categories.name', '=', 'tickets.category_name')
+        //    $data = DB::table('tickets')
+        //  ->join('categories', 'categories.name', '=', 'tickets.category_name')->where('tickets.status', $request->status);
         //  ->select('tickets.created_at', 'tickets.no',  'tickets.brand',  'tickets.title', 'categories.name',  'tickets.priority','tickets.status')
-         ->where('tickets.status', $request->status);
+         $data = DB::table('tickets')->where('tickets.status', $request->status)->where('tickets.user_id','=', $user_id);
        }
       else
       {
-       $data = DB::table('tickets');
+       $data = DB::table('tickets')->where('tickets.user_id','=', $user_id);
         //  ->join('categories', 'categories.name', '=', 'tickets.category_name')
         //  ->select('tickets.created_at', 'tickets.no',  'tickets.brand',  'tickets.title', 'categories.name',  'tickets.priority','tickets.status');
       }

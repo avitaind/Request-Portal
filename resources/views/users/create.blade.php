@@ -16,11 +16,9 @@
 
                         <div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }}" style="display:none!important;">
                             <label for="user_id" class="col-md-10 control-label">User ID</label>
-
                             <div class="col-md-10">
                                 <input id="user_id" type="text" class="form-control" name="user_id" value="{!! Auth::user()->id !!}">
                             </div>
-
                         </div>
 
                          <div class="form-group{{ $errors->has('brand') ? ' has-error' : '' }}">

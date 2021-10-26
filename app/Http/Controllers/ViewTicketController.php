@@ -40,8 +40,7 @@ class ViewTicketController extends Controller
         ->get();
         // dd($user_id);
 
-     return view('view_ticket', compact('statuses'));
+     return view('view_ticket', compact('statuses', 'user_id'));
 
     }
-
 }

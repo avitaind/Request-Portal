@@ -9,11 +9,12 @@
                 </div>
                 </div>
                 <div class="flex-center position-ref">
-          
-                <div class="center-center links">
-                        <a class="button btn btn-primary" href="{{ url('show_ticket') }}">View Tickets</a>
-                        <a class="button btn btn-primary" href="{{ url('new_ticket') }}">Create Ticket</a>
 
+                <div class="center-center links">
+                        {{--  <a class="button btn btn-primary" href="{{ url('show_ticket') }}">View Tickets</a>  --}}
+                        {{--  <a class="button btn btn-primary" href="{{ url('new_ticket') }}">Create Ticket</a>  --}}
+                        <a class="button btn btn-primary" href="{{ url('show_ticket') }}">Meliaura </a>
+                        <a class="button btn btn-primary" href="{{ url('view_ticket') }}">NEXSTGO </a>
                   </div>
             </div>
 

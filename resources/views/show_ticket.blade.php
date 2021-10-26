@@ -83,9 +83,13 @@ $(document).ready(function(){
      name: 'created_at'
     },
     {
+        data: 'job_no',
+        name: 'job_no',
+       },
+    {{--  {
      data: 'no',
      name: 'no',
-    },
+    },  --}}
     {
      data: 'brand',
      name: 'brand',

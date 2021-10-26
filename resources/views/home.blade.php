@@ -11,7 +11,7 @@
 
         <!-- Styles -->
         <style>
-      
+
 html, body {
   background-color: #fff;
   color: #636b6f;
@@ -60,7 +60,7 @@ html, body {
   text-decoration: none;
   text-transform: uppercase;
   border-radius:25px;
-  border:2px solid rebeccapurple;  
+  border:2px solid rebeccapurple;
 }
 
 
@@ -75,7 +75,7 @@ html, body {
   letter-spacing: .1rem;
   text-decoration: none;
   text-transform: uppercase;
-  border:2px solid rebeccapurple;  
+  border:2px solid rebeccapurple;
 }
 
 
@@ -86,7 +86,7 @@ html, body {
         </style>
     </head>
     <body>
-       
+
 
             <div class="content">
                 <div class="title m-b-md">

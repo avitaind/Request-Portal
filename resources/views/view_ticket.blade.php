@@ -82,10 +82,17 @@ $(document).ready(function(){
      data: 'created_at',
      name: 'created_at'
     },
+    @if($user_id==2)
+    {
+        data: 'job_no',
+        name: 'job_no',
+    },
+    @else
     {
      data: 'no',
      name: 'no',
     },
+    @endif
     {
      data: 'brand',
      name: 'brand',

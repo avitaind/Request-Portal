@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class AppMailer {
     protected $mailer;
     protected $fromAddress = 'info@ashplan.media';
-    protected $fromName = 'Service Request | ASHPLAN ';
+    protected $fromName = 'Service Request | ASHPlan Media';
     protected $to;
     protected $subject;
     protected $view;
@@ -32,12 +32,11 @@ class AppMailer {
     {
         //$this->to = $user->email;
 
-        // $mail = array(
-        //     "mail_1" => 'bhavdeep.bharadwaj@ashplan.media',
-        //     "mail_2" => 'sandeep.rawat@ashplan.media'
-        //   );
 
-         $mail_1 = array('bhavdeep.bharadwaj@ashplan.media','sandeep.rawat@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media');
+            // $mail_1 =array ('bhavdeep.bharadwaj@ashplan.media');
+            // $mail_2 =array ('sandeep.rawat@ashplan.media','bhavdeep.bharadwaj@ashplan.media');
+
+         $mail_1 = array('sandeep.rawat@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media','bhavdeep.bharadwaj@ashplan.media',);
          $mail_2 = array('sandeep.rawat@ashplan.media','aman@meliaura.com','sandeep.rawat@ashplan.media','agam@meliaura.com','bhavdeep.bharadwaj@ashplan.media');
          $mail=[];
 
@@ -58,10 +57,18 @@ class AppMailer {
         ->first();
 
         $num = sprintf('%03d', intval($number->no));
+        $num1 = sprintf('%03d',intval($number->job_no));
 
 
         $this->to = $mail;
+        if($number->user_id == 2)
+        {
+        $this->subject = "[SRN $ticket->job$num1] $ticket->title";
+        }
+        else
+        {
         $this->subject = "[SRN $ticket->job$num] $ticket->title";
+        }
         $this->view = 'emails.ticket_info';
         $this->data = compact('user', 'ticket');
 
@@ -126,12 +133,10 @@ class AppMailer {
 
     public function sendRevisionInformation($user, Revision $revision)
     {
-        // $mail = array(
-        //     "mail_1" => 'bhavdeep.bharadwaj@ashplan.media',
-        //     "mail_2" => 'sandeep.rawat@ashplan.media'
-        //   );
+        // $mail/_1 =array ('bhavdeep.bharadwaj@ashplan.media');
+            // $mail_2 =array ('sandeep.rawat@ashplan.media');
 
-        $mail_1 = array('bhavdeep.bharadwaj@ashplan.media','sandeep.rawat@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media');
+        $mail_1 = array('sandeep.rawat@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media','bhavdeep.bharadwaj@ashplan.media');
         $mail_2 = array('sandeep.rawat@ashplan.media','aman@meliaura.com','sandeep.rawat@ashplan.media','agam@meliaura.com','bhavdeep.bharadwaj@ashplan.media');
          $mail=[];
 
@@ -166,12 +171,10 @@ class AppMailer {
 
     public function sendEditInformation($user, Edit $edit)
     {
-        // $mail = array(
-        //     "mail_1" => 'bhavdeep.bharadwaj@ashplan.media',
-        //     "mail_2" => 'sandeep.rawat@ashplan.media'
-        //   );
+        // $mail_1 =array ('bhavdeep.bharadwaj@ashplan.media');
+        // $mail_2 =array ('sandeep.rawat@ashplan.media');
 
-        $mail_1 = array('bhavdeep.bharadwaj@ashplan.media','sandeep.rawat@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media');
+        $mail_1 = array('sandeep.rawat@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media','bhavdeep.bharadwaj@ashplan.media',);
         $mail_2 = array('sandeep.rawat@ashplan.media','aman@meliaura.com','sandeep.rawat@ashplan.media','agam@meliaura.com','bhavdeep.bharadwaj@ashplan.media');
          $mail=[];
 
