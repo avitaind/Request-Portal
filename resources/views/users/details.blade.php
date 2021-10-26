@@ -22,17 +22,17 @@
                              <input type="hidden" name="ticket_id" value="{!! $ticket_detail->no !!}">
                              <td>ADNESEA{{ $num = sprintf('%03d', intval($ticket_detail->no))}}</td>
                          </tr>
-               
+
                         <tr>
                             <th scope="col">Brand:</th>
                             <td>{{ ucfirst(trans($ticket_detail->brand)) }}</td>
                         </tr>
-                        
+
                         <tr>
                             <th scope="col">Country:</th>
                             <td>{{ ucfirst(trans($ticket_detail->country)) }}</td>
                         </tr>
-                        
+
                          <tr>
                             <th scope="col">Title:</th>
                             <td>{!! $ticket_detail->title !!}</td>
@@ -41,12 +41,12 @@
                              <th scope="col">Category:</th>
                              <td>{!! $ticket_detail->category_name !!}</td>
                          </tr>
-               
+
                         <tr>
                             <th scope="col">Priority:</th>
                             <td>{{ ucfirst(trans($ticket_detail->priority)) }}</td>
                         </tr>
-                        
+
                         <tr>
                             <th scope="col">Summary:</th>
                             <td>{!!  nl2br($ticket_detail->summary) !!}</td>
@@ -55,13 +55,13 @@
                              <th scope="col">Objective:</th>
                              <td>{!! $ticket_detail->objective !!}</td>
                          </tr>
-               
-               
+
+
                         <tr>
                         <th scope="col">Reference:</th>
                         @if ($ticket_detail->reference!="")
                         <td>
-                          @foreach(explode(',', $ticket_detail->reference) as $ref) 
+                          @foreach(explode(',', $ticket_detail->reference) as $ref)
                           <a href="{{ '/'.$ref}}" target="_blank" download="{!! $ref !!}">Download File</a><br/>
                           @endforeach
                           </td>
@@ -70,11 +70,11 @@
                         @endif
                         </tr>
                          <tr>
-                         
+
                             <th scope="col">Other Information:</th>
                             <td>{!! $ticket_detail->otherinfo !!}</td>
                          </tr>
-                       
+
 
                <!--- form  --->
 
@@ -83,7 +83,7 @@
                 <td>{!! $ticket_detail->deadline !!}</td>
                  </tr>
 
-                 
+
                   <tr>
                     <th scope="col">Status:</th>
                      <td>{!! $ticket_detail->status !!}</td>
@@ -96,7 +96,7 @@
                <div class="row justify-content-center">
                <div class="col-md-6">
                @if($ticket_detail->creative!='')
-                        
+
                <a href="{{ '/'.$ticket_detail->creative}}" target="_blank" download="{!! $ticket_detail->creative !!}">Download Creative</a>
                </div>
                <div class="col-md-6">
@@ -109,18 +109,18 @@
                        </form>
                 </span>
                 <span class="pull-right">
-                
+
                 <form method="POST" role="form" action="{{ route('reject', $ticket_detail->no) }}">
                  @csrf
                    <input type="hidden" name="id" value="{{ $ticket_detail->no}}">
                   <button type="submit" class="btn btn-danger">Reject</button>
                 </form>
-               
+
                </span>
              </div>
- 
+
             </div>
-                     
+
           </div>
           @else
                <span>N/A</span>
@@ -151,8 +151,8 @@
                      </div>
                   </div>
                 </td>
-       
-                 
+
+
                  </tr>
              --->
 
@@ -169,15 +169,15 @@
 
 
           </div>
-          
+
       </div>
-    </div>   
+    </div>
      <!-- Add jQuery -->
      <script>
 // when DOM is ready
         $(document).ready(function () {
 
-        // Attach Button click event listener 
+        // Attach Button click event listener
         $("#editBtn").click(function(){
 
             // show Modal
@@ -240,5 +240,5 @@
         });
         socket.subscribe('comments')
             .bind('new-comment',displayComment);
-    </script>  
+    </script>
   @endsection

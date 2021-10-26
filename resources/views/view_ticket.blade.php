@@ -82,7 +82,7 @@ $(document).ready(function(){
      data: 'created_at',
      name: 'created_at'
     },
-    @if($user_id==2)
+    {{--  @if($user_id==2)
     {
         data: 'job_no',
         name: 'job_no',
@@ -92,7 +92,11 @@ $(document).ready(function(){
      data: 'no',
      name: 'no',
     },
-    @endif
+    @endif  --}}
+    {
+        data: 'no',
+        name: 'no',
+    },
     {
      data: 'brand',
      name: 'brand',
@@ -101,7 +105,7 @@ $(document).ready(function(){
      data: 'title',
      name: 'title',
      fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-            $(nTd).html("<a href='/ticket/status/"+oData.no+"'>"+oData.title+"</a>");
+            $(nTd).html("<a href='/ticket/detail/"+oData.no+"'>"+oData.title+"</a>");
            }
        },
     {{--  {
