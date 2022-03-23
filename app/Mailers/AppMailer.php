@@ -36,7 +36,7 @@ class AppMailer {
             // $mail_1 =array ('bhavdeep.bharadwaj@ashplan.media');
             // $mail_2 =array ('sandeep.rawat@ashplan.media','bhavdeep.bharadwaj@ashplan.media');
 
-         $mail_1 = array('sandeep.rawat@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media','bhavdeep.bharadwaj@ashplan.media',);
+         $mail_1 = array('sandeep.rawat@ashplan.media','info@ashplan.media','karan.bhardwaj@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media','bhavdeep.bharadwaj@ashplan.media',);
          $mail_2 = array('sandeep.rawat@ashplan.media','aman@meliaura.com','sandeep.rawat@ashplan.media','agam@meliaura.com','bhavdeep.bharadwaj@ashplan.media');
          $mail=[];
 
@@ -136,7 +136,7 @@ class AppMailer {
         // $mail/_1 =array ('bhavdeep.bharadwaj@ashplan.media');
             // $mail_2 =array ('sandeep.rawat@ashplan.media');
 
-        $mail_1 = array('sandeep.rawat@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media','bhavdeep.bharadwaj@ashplan.media');
+        $mail_1 = array('sandeep.rawat@ashplan.media','info@ashplan.media','karan.bhardwaj@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media','bhavdeep.bharadwaj@ashplan.media');
         $mail_2 = array('sandeep.rawat@ashplan.media','aman@meliaura.com','sandeep.rawat@ashplan.media','agam@meliaura.com','bhavdeep.bharadwaj@ashplan.media');
          $mail=[];
 
@@ -171,10 +171,10 @@ class AppMailer {
 
     public function sendEditInformation($user, Edit $edit)
     {
-        // $mail_1 =array ('bhavdeep.bharadwaj@ashplan.media');
-        // $mail_2 =array ('sandeep.rawat@ashplan.media');
+        // $mail_1 = array ('bhavdeep.bharadwaj@ashplan.media');
+        // $mail_2 = array ('sandeep.rawat@ashplan.media');
 
-        $mail_1 = array('sandeep.rawat@ashplan.media','info@ashplan.media','abhishek.lamba@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media','bhavdeep.bharadwaj@ashplan.media',);
+        $mail_1 = array('sandeep.rawat@ashplan.media','info@ashplan.media','karan.bhardwaj@nexstgo.com','abhilasha.prabha@nexstgo.com','aman.sharma@ashplan.media','bhavdeep.bharadwaj@ashplan.media',);
         $mail_2 = array('sandeep.rawat@ashplan.media','aman@meliaura.com','sandeep.rawat@ashplan.media','agam@meliaura.com','bhavdeep.bharadwaj@ashplan.media');
          $mail=[];
 

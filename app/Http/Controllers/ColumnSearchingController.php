@@ -32,7 +32,7 @@ class ColumnSearchingController extends Controller
         ->get();
 
      return view('column_searching', compact('statuses'));
-     
+
     }
 }
 

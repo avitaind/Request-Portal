@@ -10,7 +10,7 @@ use Auth;
 
 class LoginController extends Controller
 {
-    
+
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -36,7 +36,7 @@ class LoginController extends Controller
      *
      * @return void
      */
-   
+
     public function __construct()
     {
             $this->middleware('guest')->except('logout');
@@ -81,8 +81,8 @@ class LoginController extends Controller
         }
         return back()->withInput($request->only('email', 'remember'));
     }
-   
-     
+
+
     public function logout(Request $request) {
         Auth::guard('admin')->logout();
         Auth::guard('client')->logout();
