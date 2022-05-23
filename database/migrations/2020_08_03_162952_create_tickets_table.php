@@ -13,7 +13,7 @@ class CreateTicketsTable extends Migration
      */
     public function up()
     {
-       // tickets table migration showing only the up() schemas with our modifications 
+       // tickets table migration showing only the up() schemas with our modifications
         Schema::create('tickets', function (Blueprint $table) {
             $table->string('job');
             $table->bigIncrements('no')->unique();
